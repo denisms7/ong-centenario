@@ -1,0 +1,14 @@
+* {
+    font-family: 'Mountains of Christmas', cursive;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.img-rodape {
+    max-width: 150px;
+    display: block;
+}
+
+.carousel-item {
+    max-height: 300px;
+}

@@ -1,14 +1,19 @@
 <!doctype html>
+{% load static %}
 <html lang="pt-br">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block titulo %}
     <title>Base</title>
+    {% endblock %}
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-    <link rel="shortcut icon" href="./icone.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'icone.png' %}" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +21,12 @@
         href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+
+
 </head>
 
 <body>
@@ -25,7 +35,7 @@
             <nav class="container navbar navbar-dark bg-dark navbar-expand-lg ">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
-                        <img src="./sos.png" alt="Logo" height="24">
+                        <img src="{% static 'sos.png' %}" alt="Logo" height="24">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -35,13 +45,13 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                                <a class="nav-link {% block menuativo1 %} {% endblock %}" aria-current="page" href="#">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Adotar</a>
+                                <a class="nav-link {% block menuativo2 %} {% endblock %}" href="#">Adotar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Sobre Nós</a>
+                                <a class="nav-link {% block menuativo3 %} {% endblock %}" href="#">Sobre Nós</a>
                             </li>
                         </ul>
                     </div>
@@ -51,38 +61,33 @@
     </header>
 
 
-
+    {% block pagina %}
+    {% endblock %}
 
 
     <footer class="bg-dark pt-5">
         <div class="container">
             <div class="d-flex justify-content-center pb-3">
-                <img src="./sos.png" alt="Logo" class="img-rodape">
+                <img src="{% static 'sos.png' %}" alt="Logo" class="img-rodape">
             </div>
-
             <div class="d-flex justify-content-center">
                 <a href="#" class="text-bg-dark p-1">Inicio</a>
                 <a href="#" class="text-bg-dark p-1">Adotar</a>
                 <a href="#" class="text-bg-dark p-1">Sobre Nós</a>
             </div>
-
             <div class="text-center text-white bg-dark p-3">
                 <p>
                     Organização Não Governamental SOS Patinhas<br>
                     Centenário do Sul, Paraná, CEP 86.630-000
                 </p>
             </div>
-
             <div class="text-center text-white-50 bg-dark pt-3">
                 2023 - Desenvolvido por Denis Muniz Silva
             </div>
         </div>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous">
-    </script>
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        </script>
 </body>
-
 </html>

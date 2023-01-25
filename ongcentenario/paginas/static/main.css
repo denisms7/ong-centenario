@@ -1,0 +1,44 @@
+* {
+    font-family: 'Mountains of Christmas', cursive;
+    font-family: 'Roboto', sans-serif;
+}
+
+.img-rodape {
+    max-width: 150px;
+    width: 100%;
+    display: block;
+}
+
+.carousel-item {
+    max-height: 300px;
+}
+
+.redes-sociais i {
+    font-size: 38px;
+    color: rgb(0, 0, 0);
+}
+
+
+.redes-sociais .bi-facebook:hover {
+    transform: scale(1.1);
+    color: #1877f2;
+}
+
+.redes-sociais .bi-whatsapp:hover {
+    transform: scale(1.1);
+    color: rgb(0, 168, 132);
+}
+
+
+.redes-sociais .bi-instagram:hover {
+    transform: scale(1.1);
+    color: #c13584;
+}
+
+
+.fmr-login {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+}
+

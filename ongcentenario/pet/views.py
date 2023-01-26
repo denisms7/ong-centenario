@@ -5,4 +5,4 @@ class PaginaAdotar(TemplateView):
     template_name = 'pet/divulgar.html'
 
 class PaginaCadastroAdotar(TemplateView):
-    template_name = 'pet/divulgar_cadastro.html'
+    template_name = 'pet/divulgar_cadastro.html' 

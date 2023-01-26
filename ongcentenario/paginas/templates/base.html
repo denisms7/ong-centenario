@@ -11,6 +11,7 @@
     {% endblock %}
 
     <link rel="stylesheet" href="{% static 'css/bootstrap5.2.3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     <link rel="shortcut icon" href="{% static 'img/icone.png' %}" type="image/x-icon">
 
@@ -19,8 +20,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet">
-
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
@@ -31,7 +30,7 @@
         <div class="bg-dark">
             <nav class="container navbar navbar-dark bg-dark navbar-expand-lg ">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{% url 'inicio' %}">
                         <img src="{% static 'img/sos.png' %}" alt="Logo" height="24">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -43,13 +42,13 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link {% block menuativo1 %} {% endblock %}" aria-current="page"
-                                    href="#">Inicio</a>
+                                    href="{% url 'inicio' %}">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% block menuativo2 %} {% endblock %}" href="#">Adotar</a>
+                                <a class="nav-link {% block menuativo2 %} {% endblock %}" href="{% url 'adotar' %}">Adotar</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {% block menuativo3 %} {% endblock %}" href="#">Sobre Nós</a>
+                                <a class="nav-link {% block menuativo3 %} {% endblock %}" href="{% url 'sobre' %}">Sobre Nós</a>
                             </li>
                         </ul>
                     </div>
@@ -67,9 +66,9 @@
                 <img src="{% static 'img/sos.png' %}" alt="Logo" class="img-rodape">
             </div>
             <div class="d-flex justify-content-center ">
-                <a href="#" class="fst-normal {% block footerativo1 %} rodapelinks {% endblock %} p-1">Inicio</a>
-                <a href="#" class="fst-normal {% block footerativo2 %} rodapelinks {% endblock %} p-1">Adotar</a>
-                <a href="#" class="fst-normal {% block footerativo3 %} rodapelinks {% endblock %} p-1">Sobre Nós</a>
+                <a href="{% url 'inicio' %}" class="fst-normal {% block footerativo1 %} rodapelinks {% endblock %} p-1">Inicio</a>
+                <a href="{% url 'adotar' %}" class="fst-normal {% block footerativo2 %} rodapelinks {% endblock %} p-1">Adotar</a>
+                <a href="{% url 'sobre' %}" class="fst-normal {% block footerativo3 %} rodapelinks {% endblock %} p-1">Sobre Nós</a>
             </div>
             <div class="text-center text-white bg-dark p-3">
                 <p>

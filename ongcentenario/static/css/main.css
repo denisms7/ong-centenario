@@ -64,5 +64,9 @@
     color: rgba(255, 255, 255, 0.6);
 }
 
+.ico-card-adotar {
+    filter: invert(100%);
+    height: 1em;
+}
 
 

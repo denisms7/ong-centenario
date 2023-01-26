@@ -10,88 +10,88 @@
 
 
 {% block pagina %}
-        <div id="carousel-imgs" class="container carousel slide" data-bs-ride="true">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carousel-imgs" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carousel-imgs" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carousel-imgs" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{% static 'img/banner1.jpg' %}" class="d-block img-banner" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/1920x1080" class="d-block img-banner" alt="...">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://via.placeholder.com/1920x1080" class="d-block img-banner" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carousel-imgs" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carousel-imgs" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-
-
-    </header>
-
-
-
-
-    <div class="container py-5">
-        <h2>Teste Teste</h2>
-        <hr>
-        <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
-            voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
-            reiciendis ducimus? Quasi, aperiam.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
-            voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
-            reiciendis ducimus? Quasi, aperiam.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
-            voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
-            reiciendis ducimus? Quasi, aperiam.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
-            voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
-            reiciendis ducimus? Quasi, aperiam.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
-            voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
-            reiciendis ducimus? Quasi, aperiam.
-        </p>
-        <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
-            voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
-            reiciendis ducimus? Quasi, aperiam.
-        </p>
-    </div>
+<div id="carousel-imgs" class="carousel slide carousel-fade">
     
-    <div class="container py-5">
-        <h2>Apoio</h2>
-        <hr>
-        <p class="d-flex justify-content-between flex-wrap">
-            <img src="https://via.placeholder.com/150x150" class="p-1 img-rodape" alt="logo">
-            <img src="https://via.placeholder.com/150x150" class="p-1 img-rodape" alt="logo">
-            <img src="https://via.placeholder.com/150x150" class="p-1 img-rodape" alt="logo">
-            <img src="https://via.placeholder.com/150x150" class="p-1 img-rodape" alt="logo">
-            <img src="https://via.placeholder.com/150x150" class="p-1 img-rodape" alt="logo">
-        </p>
-
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carousel-imgs" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carousel-imgs" data-bs-slide-to="1" aria-label="Slide 2"></button>
     </div>
 
-    {% endblock %}
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{% static 'img/banner1.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="{% static 'img/banner2.jpg' %}" class="d-block w-100" alt="...">
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-imgs" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel-imgs" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+</div>
+
+
+
+
+</header>
+
+
+
+
+<div class="container py-5">
+    <h2>Teste Teste</h2>
+    <hr>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
+        voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
+        reiciendis ducimus? Quasi, aperiam.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
+        voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
+        reiciendis ducimus? Quasi, aperiam.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
+        voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
+        reiciendis ducimus? Quasi, aperiam.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
+        voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
+        reiciendis ducimus? Quasi, aperiam.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
+        voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
+        reiciendis ducimus? Quasi, aperiam.
+    </p>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nemo, ullam quasi quibusdam totam
+        voluptates tenetur reprehenderit est alias necessitatibus ratione quae eos nesciunt repudiandae dolore
+        reiciendis ducimus? Quasi, aperiam.
+    </p>
+</div>
+
+<div class="container py-5">
+    <h2>Apoio</h2>
+    <hr>
+    <p class="d-flex justify-content-between flex-wrap">
+        <img src="https://via.placeholder.com/150x150" class="p-1 img-rodape" alt="logo">
+        <img src="https://via.placeholder.com/150x150" class="p-1 img-rodape" alt="logo">
+        <img src="https://via.placeholder.com/150x150" class="p-1 img-rodape" alt="logo">
+        <img src="https://via.placeholder.com/150x150" class="p-1 img-rodape" alt="logo">
+        <img src="https://via.placeholder.com/150x150" class="p-1 img-rodape" alt="logo">
+    </p>
+
+</div>
+
+{% endblock %}

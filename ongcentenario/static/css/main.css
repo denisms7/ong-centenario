@@ -9,8 +9,12 @@
     display: block;
 }
 
-.carousel-item {
-    max-height: 300px;
+.carousel-item img {
+    background: no-repeat center;
+    background-size: cover; 
+    width: auto;
+    height: auto;
+    
 }
 
 .redes-sociais i {

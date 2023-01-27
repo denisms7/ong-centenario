@@ -47,7 +47,7 @@ class Adocao(models.Model):
     cidade = models.CharField(max_length=200, verbose_name='Cidade', null=True)
     bairro = models.CharField(max_length=200, verbose_name='Bairro', null=True)
     endereco = models.CharField(max_length=250, verbose_name='Endereço', null=True)
-    numero = models.IntegerField(default=0, verbose_name='Número', null=True, min_length=0)
+    numero = models.IntegerField(default=0, verbose_name='Número', null=True)
     complemento = models.CharField(max_length=2000, verbose_name='Complemento', null=True)
     # Dados do Pet
     nome_pet = models.CharField(max_length=200, verbose_name='Nome do Pet', null=False)

@@ -5,4 +5,4 @@ class PaginaInicial(TemplateView):
     template_name = 'paginas/index.html'
 
 class PaginaSobre(TemplateView):
-    template_name = 'paginas/sobre.html'
+    template_name = 'paginas/estatuto.html'

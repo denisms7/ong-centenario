@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+<title>Cadastro de Adoção</title>
+{% endblock %}
+
+
+{% block pagina %}
+
+<div class="container py-5">
+    <h2>Cadastro para Adoção</h2>
+    <hr>
+
+
+    <form action="" method="post">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Cadastrar</button>
+
+    </form>
+</div>
+
+<script src="{% static 'js/divulgar_cadastro.js' %}"></script>
+
+{% endblock %}

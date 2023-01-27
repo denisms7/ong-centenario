@@ -56,6 +56,7 @@ class Adocao(models.Model):
     raca = models.ForeignKey(Raca, on_delete=models.PROTECT, verbose_name='Raça', null=False)
     sexo = models.ForeignKey(Sexo, on_delete=models.PROTECT, verbose_name='Sexo', null=False)
     qualidades = models.CharField(max_length=2000, verbose_name='Qualidades', null=False)
+    img = models.ImageField(upload_to='Adocao_fotos/', verbose_name='Foto')
 
     def __str__(self):
         return f"Dono: {self.nome_dono} Pet: {self.nome_pet} Raça: {self.raca}"

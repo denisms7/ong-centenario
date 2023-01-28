@@ -1,7 +1,7 @@
 
 // FORMATAR TELEFONE
 function mascaraFone0(event) {
-    var valor = document.getElementById("telefone0").attributes[0].ownerElement['value'];
+    var valor = document.getElementById("id_fone_1").attributes[0].ownerElement['value'];
     var retorno = valor.replace(/\D/g, "");
     retorno = retorno.replace(/^0/, "");
     if (retorno.length > 10) {
@@ -19,7 +19,7 @@ function mascaraFone0(event) {
             retorno = retorno.replace(/^(\d*)/, "($1");
         }
     }
-    document.getElementById("telefone0").attributes[0].ownerElement['value'] = retorno;
+    document.getElementById("id_fone_1").attributes[0].ownerElement['value'] = retorno;
 }
 
 function mascaraFone1(event) {
@@ -72,20 +72,20 @@ function mascaraFone2(event) {
 // Fonte: https://viacep.com.br/exemplo/javascript/
 function limpa_formulário_cep() {
     //Limpa valores do formulário de cep.
-    document.getElementById('rua').value = ("");
-    document.getElementById('bairro').value = ("");
-    document.getElementById('cidade').value = ("");
-    document.getElementById('uf').value = ("");
+    document.getElementById('id_endereco').value = ("");
+    document.getElementById('id_bairro').value = ("");
+    document.getElementById('id_cidade').value = ("");
+    document.getElementById('id_estado').value = ("");
 }
 
 function meu_callback(conteudo) {
     const divCep = document.getElementById('ceplog')
     if (!("erro" in conteudo)) {
         //Atualiza os campos com os valores.
-        document.getElementById('rua').value = (conteudo.logradouro);
-        document.getElementById('bairro').value = (conteudo.bairro);
-        document.getElementById('cidade').value = (conteudo.localidade);
-        document.getElementById('uf').value = (conteudo.uf);
+        document.getElementById('id_endereco').value = (conteudo.logradouro);
+        document.getElementById('id_bairro').value = (conteudo.bairro);
+        document.getElementById('id_cidade').value = (conteudo.localidade);
+        document.getElementById('id_estado').value = (conteudo.uf);
     } //end if.
     else {
         //CEP não Encontrado.
@@ -121,10 +121,10 @@ function pesquisacep(valor) {
         if (validacep.test(cep)) {
 
             //Preenche os campos com "..." enquanto consulta webservice.
-            document.getElementById('rua').value = "...";
+            document.getElementById('id_endereco').value = "...";
             document.getElementById('bairro').value = "...";
             document.getElementById('cidade').value = "...";
-            document.getElementById('uf').value = "...";
+            document.getElementById('id_estado').value = "...";
 
             //Cria um elemento javascript.
             var script = document.createElement('script');

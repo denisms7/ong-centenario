@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load widget_tweaks %}
+
 {% block titulo %}
 <title>Cadastro de Adoção</title>
 {% endblock %}
@@ -13,12 +15,17 @@
     <h2>Cadastro para Adoção</h2>
     <hr>
 
+    <div class="p-3">
+        {{ form.nome_dono|add_class:"form-control" }}
+    </div>
 
     <form action="" method="post">
 
         {% csrf_token %}
 
         {{ form.as_p }}
+
+
 
         <button type="submit">Cadastrar</button>
 

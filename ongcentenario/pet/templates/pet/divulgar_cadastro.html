@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load widget_tweaks %}
+
 {% block titulo %}
 <title>Cadastro de Adoção</title>
 {% endblock %}
@@ -12,12 +14,15 @@
     <h2>Cadastro para Adoção</h2>
     <hr>
 
-    <form action="">
+    <form action="" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
         <div class="row">
             <h3>Dados Pessoais</h3>
             <div class="col-sm-12 col-md-12 mb-3">
                 <label for="nome-dono" class="form-label">Nome Completo do Dono:</label>
-                <input type="text" class="form-control" id="nome-dono">
+                {{ form.nome_dono|add_class:"form-control" }}
             </div>
 
             <h3>Contato</h3>
@@ -27,34 +32,32 @@
             <div class="row">
                 <div class="col-sm-12 col-md-6 mb-3">
                     <label for="email_1" class="form-label">E-mail:</label>
-                    <input type="email" class="form-control" id="email_1" placeholder="exemplo@exemplo.com"
-                        maxlength="100">
+                    {{ form.email_1|add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-6 mb-3">
                     <label for="email_2" class="form-label">E-mail:</label>
-                    <input type="email" class="form-control" id="email_2" placeholder="exemplo@exemplo.com"
-                        maxlength="100">
+                    {{ form.email_2|add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-4 mb-3">
-                    <label for="telefone0" class="form-label telefone">Fone 01:</label>
-                    <input type="text" class="form-control cl_telefone" id="telefone0" onkeyup="mascaraFone0(event)" />
+                    <label for="id_fone_1" class="form-label telefone">Fone 01:</label>
+                    {% render_field form.fone_1 class="form-control" %}
                 </div>
 
                 <div class="col-sm-12 col-md-4 mb-3">
-                    <label for="telefone1" class="form-label telefone">Fone 02:</label>
-                    <input type="text" class="form-control cl_telefone" id="telefone1" onkeyup="mascaraFone1(event)" />
+                    <label for="id_fone_3" class="form-label telefone">Fone 02:</label>
+                    {% render_field form.fone_2 class="form-control" %}
                 </div>
 
                 <div class="col-sm-12 col-md-4 mb-3">
-                    <label for="telefone2" class="form-label telefone">Fone 03:</label>
-                    <input type="text" class="form-control cl_telefone" id="telefone2" onkeyup="mascaraFone2(event)" />
+                    <label for="id_fone_3" class="form-label telefone">Fone 03:</label>
+                    {% render_field form.fone_3 class="form-control" %}
                 </div>
 
                 <div class="col-sm-12 col-md-12 mb-3">
-                    <label for="outros_contato" class="form-label">Observações:</label>
-                    <textarea class="form-control" id="outros_contato" rows="2" maxlength="250"></textarea>
+                    <label for="obs" class="form-label">Observações:</label>
+                    {{ form.obs|add_class:"form-control" }}
                 </div>
             </div>
 
@@ -67,50 +70,47 @@
                 <div class="col-sm-6 col-md-3 mb-3">
                     <label for="div-cep" class="form-label d-block">CEP:</label>
                     <div id="div-cep" class="d-inline-flex w-100">
-                        <input type="text" class="form-control" id="cep" placeholder="00000000" required maxlength="8">
-                        <button type="button" onclick="pesquisacep(cep.value);" class="btn btn-primary ms-1">
+                        {{ form.cep |add_class:"form-control" }}
+                        <button type="button" onclick="pesquisacep(id_cep.value);" class="btn btn-primary ms-1">
                             <i class="bi bi-search" id="lupacep"></i>
                             <div class="spinner-border spinner-border-sm text-light d-none" id="spinnercep"
                                 role="status"></div>
                         </button>
-
                     </div>
-
                     <div class="invalid-feedback show fs-6" id="ceplog">
                         CEP invalido.
                     </div>
-
                 </div>
 
                 <div class="col-sm-6 col-md-2 mb-3">
-                    <label for="uf" class="form-label">Estado:</label>
-                    <input type="text" class="form-control" id="uf" placeholder="xx" maxlength="2">
+                    <label for="id_estado" class="form-label">Estado:</label>
+                    {{ form.estado |add_class:"form-control" }}
 
                 </div>
 
                 <div class="col-sm-12 col-md-7 mb-3">
-                    <label for="cidade" class="form-label">Cidade:</label>
-                    <input type="text" class="form-control" id="cidade" maxlength="150">
+                    <label for="id_cidade" class="form-label">Cidade:</label>
+                    {{ form.cidade |add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-5 mb-3">
-                    <label for="bairro" class="form-label">Bairro:</label>
-                    <input type="text" class="form-control" id="bairro" maxlength="150">
+                    <label for="id_bairro" class="form-label">Bairro:</label>
+                    {{ form.bairro |add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-5 mb-3">
-                    <label for="rua" class="form-label">Endereço:</label>
-                    <input type="text" class="form-control" id="rua" maxlength="150">
+                    <label for="id_rua" class="form-label">Endereço:</label>
+                    {{ form.endereco |add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-2 mb-3">
-                    <label for="numero" class="form-label">Numero:</label>
-                    <input type="number" class="form-control" id="numero" placeholder="000" maxlength="10">
+                    <label for="id_numero" class="form-label">Numero:</label>
+                    {{ form.numero |add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-12 mb-3">
-                    <label for="complemento" class="form-label">Complemento:</label>
-                    <textarea class="form-control" id="complemento" rows="2" maxlength="250"></textarea>
+                    <label for="id_complemento" class="form-label">Complemento:</label>
+                    {{ form.complemento |add_class:"form-control" }}
                 </div>
             </div>
 
@@ -121,35 +121,48 @@
             <div class="row">
 
                 <div class="col-sm-12 col-md-10 mb-3">
-                    <label for="pet-nome" class="form-label">Nome do Pet:</label>
-                    <input type="text" class="form-control" id="pet-nome">
+                    <label for="nome_pet" class="form-label">Nome do Pet:</label>
+                    {{ form.nome_pet |add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-2 mb-3">
-                    <label for="pet-idade" class="form-label">Idade:</label>
-                    <input type="number" class="form-control" id="pet-idade">
+                    <label for="idade" class="form-label">Idade:</label>
+                    {{ form.idade |add_class:"form-select" }}
                 </div>
 
                 <div class="col-sm-12 col-md-4 mb-3">
-                    <label for="pet-especie" class="form-label">Especie:</label>
-                    <input type="text" class="form-control" id="pet-especie">
+                    <label for="especie" class="form-label">Especie:</label>
+                    {{ form.especie |add_class:"form-select" }}
                 </div>
                 <div class="col-sm-12 col-md-4 mb-3">
                     <label for="pet-raca" class="form-label">Raça:</label>
-                    <input type="text" class="form-control" id="pet-raca">
+                    {{ form.raca |add_class:"form-select" }}
                 </div>
 
                 <div class="col-sm-12 col-md-4 mb-3">
                     <label for="pet-raca" class="form-label">Sexo:</label>
-                    <input type="text" class="form-control" id="pet-raca">
+                    {{ form.sexo |add_class:"form-select" }}
                 </div>
 
                 <div class="col-sm-12 col-md-12 mb-3">
                     <label for="pet-raca" class="form-label">Qualidades:</label>
-                    <input type="text" class="form-control" id="pet-raca">
+                    {{ form.qualidades |add_class:"form-control" }}
+                </div>
+
+                <div class="col-sm-12 col-md-12 mb-3">
+                    <label for="img" class="form-label">Foto:</label>
+                    {{ form.img |add_class:"form-control" }}
                 </div>
             </div>
         </div>
+
+        <div>
+            <button type="submit" class="btn btn-success"><i class="bi bi-check-lg me-1"></i>Salvar</button>
+            <button type="reset"  class="btn btn-warning"><i class="bi bi-brush me-1"></i>Limpar</button>
+
+        </div>
+
+        
     </form>
 </div>
 

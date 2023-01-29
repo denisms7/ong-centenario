@@ -66,6 +66,6 @@ class PaginaCadastroAdotarEdit(UpdateView):
         'img',
     ]
 
-    template_name = 'pet/divulgar_cadastroF.html'
+    template_name = 'pet/divulgar_cadastro.html'
 
     success_url = reverse_lazy('adotar')

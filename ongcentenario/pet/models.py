@@ -31,6 +31,14 @@ class Sexo(models.Model):
         return f"{self.sexo}"
 
 
+
+class Status(models.Model):
+    status = models.CharField(max_length=15, verbose_name='Status', unique=True, null=False)
+
+    def __str__(self):
+        return f"{self.status}"
+
+
 class Adocao(models.Model):
     # Dados Pessoais
     nome_dono = models.CharField(max_length=200, verbose_name='Nome Completo do Dono', null=False)
@@ -57,6 +65,7 @@ class Adocao(models.Model):
     sexo = models.ForeignKey(Sexo, on_delete=models.PROTECT, verbose_name='Sexo', null=False)
     qualidades = models.CharField(max_length=2000, verbose_name='Qualidades', null=False)
     img = models.ImageField(upload_to='Adocao_fotos/', verbose_name='Foto')
+    status = models.ForeignKey(Status, on_delete=models.PROTECT, verbose_name='Status', null=False)
 
     def __str__(self):
         return f"Dono: {self.nome_dono} Pet: {self.nome_pet} Raça: {self.raca}"

@@ -34,6 +34,7 @@ class PaginaCadastroAdotar(CreateView):
         'sexo',
         'qualidades',
         'img',
+        'status',
     ]
 
     template_name = 'pet/divulgar_cadastro.html'
@@ -64,6 +65,7 @@ class PaginaCadastroAdotarEdit(UpdateView):
         'sexo',
         'qualidades',
         'img',
+        'status',
     ]
 
     template_name = 'pet/divulgar_cadastro.html'

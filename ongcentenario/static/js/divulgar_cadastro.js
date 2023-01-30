@@ -78,6 +78,7 @@ function limpa_formulário_cep() {
     document.getElementById('id_estado').value = ("");
 }
 
+
 function meu_callback(conteudo) {
     const divCep = document.getElementById('ceplog')
     if (!("erro" in conteudo)) {
@@ -104,7 +105,6 @@ function pesquisacep(valor) {
     const divCep = document.getElementById('ceplog')
     const lupaCep = document.getElementById('lupacep')
     const spinnerCep = document.getElementById('spinnercep')
-
     lupaCep.classList.add("d-none");
     spinnerCep.classList.remove("d-none");
 
@@ -241,3 +241,16 @@ function AbrirConjuge() {
     }
 }
 
+function ColorirStatus() {
+    let Campo = document.getElementById(id_status)
+
+    if (Campo.value() == 1 ) {
+        Campo.style.color = "#008000"
+    }
+
+    console.log(Campo.value())
+}
+
+function teste() {
+    alert("Eu sou um alert!");
+}

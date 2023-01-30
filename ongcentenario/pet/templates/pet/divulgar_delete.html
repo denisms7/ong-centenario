@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+<title>Adote</title>
+{% endblock %}
+
+{% block menuativo2 %} active {% endblock %}
+{% block footerativo2 %} active {% endblock %}
+
+{% block pagina %}
+
+
+<div class="container py-5">
+    <h2>Excluir registro</h2>
+    <hr>
+
+    <p>
+        Deseja excluir o registro:
+        <br>
+        <b>{{ object }}</b>  
+    </p>
+
+    <p>
+        Esta ação nãp poderá ser desfeita
+    </p>
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-danger"><i class="bi bi-trash3 me-1"></i>Excluir</button>
+    </form>
+
+
+</div>
+
+{% endblock %}

@@ -20,7 +20,7 @@
         Informe todos os campos obrigatorios (<span class="text-danger">*</span>)
     </p>
 
-    <form action="" enctype="multipart/form-data">
+    <form enctype="multipart/form-data" method="post">
 
         {% csrf_token %}
 
@@ -30,7 +30,7 @@
 
             <div class="col-sm-12 col-md-4 mb-3">
                 <label for="id_status" class="form-label">Status: <span class="text-danger">*</span></label>
-                {{ form.status | add_class:"form-select" }}
+                {{ form.status|add_class:"form-control" }}
             </div>
 
             <h3>Dados Pessoais</h3>
@@ -56,17 +56,17 @@
 
                 <div class="col-sm-12 col-md-4 mb-3">
                     <label for="id_fone_1" class="form-label telefone">Fone 01:</label>
-                    {% render_field form.fone_1 class="form-control" %}
+                    {{ form.fone_1|add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-4 mb-3">
                     <label for="id_fone_3" class="form-label telefone">Fone 02:</label>
-                    {% render_field form.fone_2 class="form-control" %}
+                    {{ form.fone_2|add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-4 mb-3">
                     <label for="id_fone_3" class="form-label telefone">Fone 03:</label>
-                    {% render_field form.fone_3 class="form-control" %}
+                    {{ form.fone_3|add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-12 mb-3">
@@ -84,7 +84,8 @@
                 <div class="col-sm-6 col-md-3 mb-3">
                     <label for="div-cep" class="form-label d-block">CEP:</label>
                     <div id="div-cep" class="d-inline-flex w-100">
-                        {{ form.cep |add_class:"form-control" }}
+                        
+                        {{ form.cep|add_class:"form-control" }}
                         <button type="button" onclick="pesquisacep(id_cep.value);" class="btn btn-primary ms-1">
                             <i class="bi bi-search" id="lupacep"></i>
                             <div class="spinner-border spinner-border-sm text-light d-none" id="spinnercep"
@@ -98,23 +99,22 @@
 
                 <div class="col-sm-6 col-md-2 mb-3">
                     <label for="id_estado" class="form-label">Estado:</label>
-                    {{ form.estado |add_class:"form-control" }}
-
+                    {{ form.estado|add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-7 mb-3">
                     <label for="id_cidade" class="form-label">Cidade:</label>
-                    {{ form.cidade |add_class:"form-control" }}
+                    {{ form.cidade|add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-5 mb-3">
                     <label for="id_bairro" class="form-label">Bairro:</label>
-                    {{ form.bairro |add_class:"form-control" }}
+                    {{ form.bairro|add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-5 mb-3">
                     <label for="id_rua" class="form-label">Endereço:</label>
-                    {{ form.endereco |add_class:"form-control" }}
+                    {{ form.endereco|add_class:"form-control" }}
                 </div>
 
                 <div class="col-sm-12 col-md-2 mb-3">
@@ -173,14 +173,12 @@
         <div>
             <button type="submit" class="btn btn-success"><i class="bi bi-check-lg me-1"></i>Salvar</button>
             <button type="reset"  class="btn btn-warning"><i class="bi bi-brush me-1"></i>Limpar</button>
-
         </div>
-
-        
+       
     </form>
 </div>
 
-<script src="{% static 'js/divulgar_cadastro.js' %}"></script>
 
+<script src="{% static 'js/divulgar_cadastro.js' %}"></script>
 
 {% endblock %}

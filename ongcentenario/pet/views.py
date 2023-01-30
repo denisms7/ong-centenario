@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Adocao
 from django.urls import reverse_lazy
 
@@ -70,4 +70,10 @@ class PaginaCadastroAdotarEdit(UpdateView):
 
     template_name = 'pet/divulgar_cadastro.html'
 
+    success_url = reverse_lazy('adotar')
+
+
+class PaginaCadastroAdotarDelete(DeleteView):
+    model = Adocao
+    template_name = 'pet/divulgar_delete.html'
     success_url = reverse_lazy('adotar')

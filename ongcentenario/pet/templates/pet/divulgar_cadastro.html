@@ -19,14 +19,12 @@
         Informe todos os campos obrigatorios (<span class="text-danger"><b>*</b></span>)
     </p>
 
-
-
     <form enctype="multipart/form-data" method="post">
 
         {% csrf_token %}
         {{ form.non_field_errors }}
 
-        
+
         <div class="row">
             <h2>Status</h2>
             <hr>
@@ -37,7 +35,6 @@
             {{ form.status|add_class:"form-select" }}
             {{ form.status.errors }}
         </div>
-
 
         <div class="row">
             <h3>Dados Pessoais</h3>
@@ -67,7 +64,7 @@
             </div>
 
             <div class="col-sm-12 col-md-4 mb-3">
-                <label for="id_fone_1" class="form-label telefone">Fone 01:</label>
+                <label for="id_fone_1" class="form-label telefone">Fone 01: <span class="text-danger"><b>*</b></span></label>
                 {{ form.fone_1|add_class:"form-control" }}
                 <span class="text-danger">{{ form.fone_1.errors }}</span>
             </div>

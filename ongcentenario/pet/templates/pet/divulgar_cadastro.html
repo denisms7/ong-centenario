@@ -33,7 +33,7 @@
         <div class="col-sm-12 col-md-4 mb-3">
             <label for="id_status" class="form-label">Status: <span class="text-danger"><b>*</b></span></label>
             {{ form.status|add_class:"form-select" }}
-            {{ form.status.errors }}
+            <span class="text-danger">{{ form.status.errors }}</span>
         </div>
 
         <div class="row">

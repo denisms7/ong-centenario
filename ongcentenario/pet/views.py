@@ -1,13 +1,9 @@
 from django.views.generic import TemplateView
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
 from .models import Adocao
 from django.urls import reverse_lazy
-
-
-
-class PaginaAdotar(TemplateView):
-    template_name = 'pet/divulgar.html'
 
 
 class PaginaCadastroAdotar(CreateView):
@@ -77,3 +73,8 @@ class PaginaCadastroAdotarDelete(DeleteView):
     model = Adocao
     template_name = 'pet/divulgar_delete.html'
     success_url = reverse_lazy('adotar')
+
+
+class PaginaAdotar(ListView):
+    model = Adocao
+    template_name = 'pet/divulgar.html'

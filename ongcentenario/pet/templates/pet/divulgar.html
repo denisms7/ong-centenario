@@ -16,23 +16,22 @@
     <h2>Disponíveis para Adoção</h2>
     <hr>
 
-
-
     <section class="row justify-content-center">
 
+        {% for item in object_list %}
         <div class="p-1 col-12 col-sm-12 col-md-4">
             <div class="card">
 
-                <img src="https://t2.ea.ltmcdn.com/pt/razas/5/3/7/vira-lata-caramelo_735_0_600.webp"
+                <img src="{{item.img}}"
                     class="card-img-top img-card" alt="Foto do Pet">
 
                 <div class="card-body">
-                    <h5 class="card-title">Jubileu</h5>
+                    <h5 class="card-title">{{item.nome_pet}}</h5>
                     <p class="card-text">
-                        <b>Raça:</b> Mongrel (Vira-lata)<br>
-                        <b>Sexo:</b> Macho<br>
-                        <b>Idade:</b> 5 anos<br>
-                        <b>Qualidades:</b> Docil, Baiano, Come Baratas<br>
+                        <b>Raça:</b> {{item.raca}}<br>
+                        <b>Sexo:</b> {{item.sexo}}<br>
+                        <b>Idade:</b> {{item.idade}}<br>
+                        <b>Qualidades:</b> {{item.qualidades}}<br>
                     </p>
                     <a href="#" class="btn btn-success">
                         <div class="d-flex align-self-center"><img src="{% static 'img/icone.svg' %}"
@@ -48,6 +47,12 @@
                 </div>
             </div>
         </div>
+
+        {% empty %}
+            <p>
+                Nao existem pets disponíveis para adoção no momento.
+            </p>
+        {% endfor %}
 
 
     </section>

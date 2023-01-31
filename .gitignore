@@ -5,6 +5,7 @@
 
 ong-env
 venv
+env
 
 # User-specific files
 *.rsuser

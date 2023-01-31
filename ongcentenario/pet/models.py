@@ -40,23 +40,25 @@ class Status(models.Model):
 
 
 class Adocao(models.Model):
+    # Sistema
+    cadastrado_em = models.DateTimeField(auto_now_add=True)
     # Dados Pessoais
     nome_dono = models.CharField(max_length=200, verbose_name='Nome Completo do Dono', null=False)
     #Contato
-    email_1 = models.CharField(max_length=150, verbose_name='E-mail 01', null=True)
-    email_2 = models.CharField(max_length=150, verbose_name='E-mail 02', null=True)
-    fone_1 = models.CharField(max_length=15, verbose_name='Fone 01', null=True)
-    fone_2 = models.CharField(max_length=15, verbose_name='Fone 02', null=True)
-    fone_3 = models.CharField(max_length=15, verbose_name='Fone 03', null=True)
-    obs = models.CharField(max_length=2000, verbose_name='Observações', null=True)
+    email_1 = models.CharField(max_length=150, verbose_name='E-mail 01', null=True, blank=True)
+    email_2 = models.CharField(max_length=150, verbose_name='E-mail 02', null=True, blank=True)
+    fone_1 = models.CharField(max_length=15, verbose_name='Fone 01', null=True, blank=True)
+    fone_2 = models.CharField(max_length=15, verbose_name='Fone 02', null=True, blank=True)
+    fone_3 = models.CharField(max_length=15, verbose_name='Fone 03', null=True, blank=True)
+    obs = models.TextField(max_length=2000, verbose_name='Observações', null=True, blank=True)
     # Endereço
-    cep = models.CharField(max_length=8, verbose_name='CEP', null=True)
-    estado = models.CharField(max_length=2, verbose_name='Estado', null=True)
-    cidade = models.CharField(max_length=200, verbose_name='Cidade', null=True)
-    bairro = models.CharField(max_length=200, verbose_name='Bairro', null=True)
-    endereco = models.CharField(max_length=250, verbose_name='Endereço', null=True)
-    numero = models.IntegerField(default=0, verbose_name='Número', null=True)
-    complemento = models.CharField(max_length=2000, verbose_name='Complemento', null=True)
+    cep = models.CharField(max_length=8, verbose_name='CEP', null=True, blank=True)
+    estado = models.CharField(max_length=2, verbose_name='Estado', null=True, blank=True)
+    cidade = models.CharField(max_length=200, verbose_name='Cidade', null=True, blank=True)
+    bairro = models.CharField(max_length=200, verbose_name='Bairro', null=True, blank=True)
+    endereco = models.CharField(max_length=250, verbose_name='Endereço', null=True, blank=True)
+    numero = models.IntegerField(default=0, verbose_name='Número', null=True, blank=True)
+    complemento = models.TextField(max_length=2000, verbose_name='Complemento', null=True, blank=True)
     # Dados do Pet
     nome_pet = models.CharField(max_length=200, verbose_name='Nome do Pet', null=False)
     idade = models.ForeignKey(Idade, on_delete=models.PROTECT, verbose_name='Idade', null=False)
@@ -64,7 +66,7 @@ class Adocao(models.Model):
     raca = models.ForeignKey(Raca, on_delete=models.PROTECT, verbose_name='Raça', null=False)
     sexo = models.ForeignKey(Sexo, on_delete=models.PROTECT, verbose_name='Sexo', null=False)
     qualidades = models.CharField(max_length=2000, verbose_name='Qualidades', null=False)
-    img = models.ImageField(upload_to='Adocao_fotos/', verbose_name='Foto')
+    img = models.ImageField(upload_to='Adocao_fotos/', verbose_name='Foto', null=False)
     status = models.ForeignKey(Status, on_delete=models.PROTECT, verbose_name='Status', null=False)
 
     def __str__(self):

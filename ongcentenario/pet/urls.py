@@ -11,6 +11,4 @@ urlpatterns = [
     path('adocao/edit/<int:pk>', PaginaCadastroAdotarEdit.as_view(), name='edit-pet'),
     path('adocao/delete/<int:pk>', PaginaCadastroAdotarDelete.as_view(), name='delete-pet'),
     path('adocao/lista/', PaginaAdotarLista.as_view(), name='lista-pet'),
-
-    
 ]

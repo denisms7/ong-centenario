@@ -12,169 +12,201 @@
 
 <div class="container py-5">
 
-
     <h2>Cadastro para Adoção</h2>
     <hr>
 
     <p class="text-secondary">
-        Informe todos os campos obrigatorios (<span class="text-danger">*</span>)
+        Informe todos os campos obrigatorios (<span class="text-danger"><b>*</b></span>)
     </p>
+
+
 
     <form enctype="multipart/form-data" method="post">
 
         {% csrf_token %}
+        {{ form.non_field_errors }}
 
+        
         <div class="row">
             <h2>Status</h2>
             <hr>
+        </div>
 
-            <div class="col-sm-12 col-md-4 mb-3">
-                <label for="id_status" class="form-label">Status: <span class="text-danger">*</span></label>
-                {{ form.status|add_class:"form-control" }}
-            </div>
+        <div class="col-sm-12 col-md-4 mb-3">
+            <label for="id_status" class="form-label">Status: <span class="text-danger"><b>*</b></span></label>
+            {{ form.status|add_class:"form-select" }}
+            {{ form.status.errors }}
+        </div>
 
+
+        <div class="row">
             <h3>Dados Pessoais</h3>
+            <hr>
             <div class="col-sm-12 col-md-12 mb-3">
-                <label for="id_nome-dono" class="form-label">Nome Completo do Dono: <span class="text-danger">*</span></label>
+                <label for="id_nome-dono" class="form-label">Nome Completo do Dono: <span class="text-danger"><b>*</b></span></label>
                 {{ form.nome_dono|add_class:"form-control" }}
-            </div>
-
-            <h3>Contato</h3>
-            <!-- ========================================================================================================== -->
-            <!-- ===== CONTATO ===== -->
-            <!-- ========================================================================================================== -->
-            <div class="row">
-                <div class="col-sm-12 col-md-6 mb-3">
-                    <label for="id_email_1" class="form-label">E-mail 01:</label>
-                    {{ form.email_1|add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-6 mb-3">
-                    <label for="id_email_2" class="form-label">E-mail 02:</label>
-                    {{ form.email_2|add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-4 mb-3">
-                    <label for="id_fone_1" class="form-label telefone">Fone 01:</label>
-                    {{ form.fone_1|add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-4 mb-3">
-                    <label for="id_fone_3" class="form-label telefone">Fone 02:</label>
-                    {{ form.fone_2|add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-4 mb-3">
-                    <label for="id_fone_3" class="form-label telefone">Fone 03:</label>
-                    {{ form.fone_3|add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-12 mb-3">
-                    <label for="id_obs" class="form-label">Observações:</label>
-                    {{ form.obs|add_class:"form-control" }}
-                </div>
-            </div>
-
-            <h3>Endereço</h3>
-            <!-- ========================================================================================================== -->
-            <!-- ===== ENDERECO ===== -->
-            <!-- ========================================================================================================== -->
-
-            <div class="row">
-                <div class="col-sm-6 col-md-3 mb-3">
-                    <label for="div-cep" class="form-label d-block">CEP:</label>
-                    <div id="div-cep" class="d-inline-flex w-100">
-                        
-                        {{ form.cep|add_class:"form-control" }}
-                        <button type="button" onclick="pesquisacep(id_cep.value);" class="btn btn-primary ms-1">
-                            <i class="bi bi-search" id="lupacep"></i>
-                            <div class="spinner-border spinner-border-sm text-light d-none" id="spinnercep"
-                                role="status"></div>
-                        </button>
-                    </div>
-                    <div class="invalid-feedback show fs-6" id="ceplog">
-                        CEP invalido.
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-2 mb-3">
-                    <label for="id_estado" class="form-label">Estado:</label>
-                    {{ form.estado|add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-7 mb-3">
-                    <label for="id_cidade" class="form-label">Cidade:</label>
-                    {{ form.cidade|add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-5 mb-3">
-                    <label for="id_bairro" class="form-label">Bairro:</label>
-                    {{ form.bairro|add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-5 mb-3">
-                    <label for="id_rua" class="form-label">Endereço:</label>
-                    {{ form.endereco|add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-2 mb-3">
-                    <label for="id_numero" class="form-label">Numero:</label>
-                    {{ form.numero |add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-12 mb-3">
-                    <label for="id_complemento" class="form-label">Complemento:</label>
-                    {{ form.complemento |add_class:"form-control" }}
-                </div>
-            </div>
-
-            <h3>Dados do Pet</h3>
-            <!-- ========================================================================================================== -->
-            <!-- ===== PET ===== -->
-            <!-- ========================================================================================================== -->
-            <div class="row">
-
-                <div class="col-sm-12 col-md-10 mb-3">
-                    <label for="id_nome_pet" class="form-label">Nome do Pet: <span class="text-danger">*</span></label>
-                    {{ form.nome_pet |add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-2 mb-3">
-                    <label for="id_idade" class="form-label">Idade: <span class="text-danger">*</span></label>
-                    {{ form.idade |add_class:"form-select" }}
-                </div>
-
-                <div class="col-sm-12 col-md-4 mb-3">
-                    <label for="id_especie" class="form-label">Especie: <span class="text-danger">*</span></label>
-                    {{ form.especie |add_class:"form-select" }}
-                </div>
-                <div class="col-sm-12 col-md-4 mb-3">
-                    <label for="id_raca" class="form-label">Raça: <span class="text-danger">*</span></label>
-                    {{ form.raca |add_class:"form-select" }}
-                </div>
-
-                <div class="col-sm-12 col-md-4 mb-3">
-                    <label for="id_sexo" class="form-label">Sexo: <span class="text-danger">*</span></label>
-                    {{ form.sexo |add_class:"form-select" }}
-                </div>
-
-                <div class="col-sm-12 col-md-12 mb-3">
-                    <label for="id_qualidades" class="form-label">Qualidades: <span class="text-danger">*</span></label>
-                    {{ form.qualidades |add_class:"form-control" }}
-                </div>
-
-                <div class="col-sm-12 col-md-6 mb-3">
-                    <label for="id_img" class="form-label">Foto: <span class="text-danger">*</span></label>
-                    {{ form.img |add_class:"form-control" }}
-                </div>
+                <span class="text-danger">{{ form.nome_dono.errors }}</span>
             </div>
         </div>
+
+        <h3>Contato</h3>
+        <!-- ========================================================================================================== -->
+        <!-- ===== CONTATO ===== -->
+        <!-- ========================================================================================================== -->
+        <div class="row">
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label for="id_email_1" class="form-label">E-mail 01:</label>
+                {{ form.email_1|add_class:"form-control" }}
+                <span class="text-danger">{{ form.email_1.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label for="id_email_2" class="form-label">E-mail 02:</label>
+                {{ form.email_2|add_class:"form-control" }}
+                <span class="text-danger">{{ form.email_2.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-4 mb-3">
+                <label for="id_fone_1" class="form-label telefone">Fone 01:</label>
+                {{ form.fone_1|add_class:"form-control" }}
+                <span class="text-danger">{{ form.fone_1.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-4 mb-3">
+                <label for="id_fone_3" class="form-label telefone">Fone 02:</label>
+                {{ form.fone_2|add_class:"form-control" }}
+                <span class="text-danger">{{ form.fone_2.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-4 mb-3">
+                <label for="id_fone_3" class="form-label telefone">Fone 03:</label>
+                {{ form.fone_3|add_class:"form-control" }}
+                <span class="text-danger">{{ form.fone_3.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-12 mb-3">
+                <label for="id_obs" class="form-label">Observações:</label>
+                {% render_field form.obs class="form-control" rows="2" %}
+                <span class="text-danger">{{ form.obs.errors }}</span>
+            </div>
+        </div>
+
+        <h3>Endereço</h3>
+        <!-- ========================================================================================================== -->
+        <!-- ===== ENDERECO ===== -->
+        <!-- ========================================================================================================== -->
+
+        <div class="row">
+            <div class="col-sm-6 col-md-3 mb-3">
+                <label for="div-cep" class="form-label d-block">CEP:</label>
+                <div id="div-cep" class="d-inline-flex w-100">
+
+                    {{ form.cep|add_class:"form-control" }}
+                    <button type="button" onclick="pesquisacep(id_cep.value);" class="btn btn-primary ms-1">
+                        <i class="bi bi-search" id="lupacep"></i>
+                        <div class="spinner-border spinner-border-sm text-light d-none" id="spinnercep" role="status">
+                        </div>
+                    </button>
+                </div>
+                <span class="text-danger">{{ form.cep.errors }}</span>
+                <div class="invalid-feedback show fs-6" id="ceplog">
+                    CEP invalido.
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-2 mb-3">
+                <label for="id_estado" class="form-label">Estado:</label>
+                {{ form.estado|add_class:"form-control" }}
+                <span class="text-danger">{{ form.estado.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-7 mb-3">
+                <label for="id_cidade" class="form-label">Cidade:</label>
+                {{ form.cidade|add_class:"form-control" }}
+                <span class="text-danger">{{ form.cidade.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-5 mb-3">
+                <label for="id_bairro" class="form-label">Bairro:</label>
+                {{ form.bairro|add_class:"form-control" }}
+                <span class="text-danger">{{ form.bairro.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-5 mb-3">
+                <label for="id_rua" class="form-label">Endereço:</label>
+                {{ form.endereco|add_class:"form-control" }}
+                <span class="text-danger">{{ form.endereco.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-2 mb-3">
+                <label for="id_numero" class="form-label">Numero:</label>
+                {{ form.numero |add_class:"form-control" }}
+                <span class="text-danger">{{ form.numero.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-12 mb-3">
+                <label for="id_complemento" class="form-label">Complemento:</label>
+
+                {% render_field form.complemento class="form-control" rows="2" %}
+                <span class="text-danger">{{ form.complemento.errors }}</span>
+            </div>
+        </div>
+
+        <h3>Dados do Pet</h3>
+        <!-- ========================================================================================================== -->
+        <!-- ===== PET ===== -->
+        <!-- ========================================================================================================== -->
+        <div class="row">
+
+            <div class="col-sm-12 col-md-10 mb-3">
+                <label for="id_nome_pet" class="form-label">Nome do Pet: <span class="text-danger"><b>*</b></span></label>
+                {{ form.nome_pet |add_class:"form-control" }}
+                <span class="text-danger">{{ form.nome_pet.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-2 mb-3">
+                <label for="id_idade" class="form-label">Idade: <span class="text-danger"><b>*</b></span></label>
+                {{ form.idade |add_class:"form-select" }}
+                <span class="text-danger">{{ form.idade.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-4 mb-3">
+                <label for="id_especie" class="form-label">Especie: <span class="text-danger"><b>*</b></span></label>
+                {{ form.especie |add_class:"form-select" }}
+                <span class="text-danger">{{ form.especie.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-4 mb-3">
+                <label for="id_raca" class="form-label">Raça: <span class="text-danger"><b>*</b></span></label>
+                {{ form.raca |add_class:"form-select" }}
+                <span class="text-danger">{{ form.raca.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-4 mb-3">
+                <label for="id_sexo" class="form-label">Sexo: <span class="text-danger"><b>*</b></span></label>
+                {{ form.sexo |add_class:"form-select" }}
+                <span class="text-danger">{{ form.sexo.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-12 mb-3">
+                <label for="id_qualidades" class="form-label">Qualidades: <span class="text-danger"><b>*</b></span></label>
+                {{ form.qualidades |add_class:"form-control" }}
+                <span class="text-danger">{{ form.qualidades.errors }}</span>
+            </div>
+
+            <div class="col-sm-12 col-md-6 mb-3">
+                <label for="id_img" class="form-label">Foto: <span class="text-danger"><b>*</b></span></label>
+                {{ form.img |add_class:"form-control" }}
+                <span class="text-danger">{{ form.img.errors }}</span>
+            </div>
+        </div>
+
 
         <div>
             <button type="submit" class="btn btn-success"><i class="bi bi-check-lg me-1"></i>Salvar</button>
-            <button type="reset"  class="btn btn-warning"><i class="bi bi-brush me-1"></i>Limpar</button>
+            <button type="reset" class="btn btn-warning"><i class="bi bi-brush me-1"></i>Limpar</button>
         </div>
-       
+
     </form>
 </div>
 

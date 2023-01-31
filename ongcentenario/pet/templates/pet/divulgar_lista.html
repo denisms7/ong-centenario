@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+<title>Adote</title>
+{% endblock %}
+
+{% block menuativo2 %} active {% endblock %}
+{% block footerativo2 %} active {% endblock %}
+
+{% block pagina %}
+
+<div class="container py-5">
+    <h2>Disponíveis para Adoção</h2>
+    <hr>
+
+    <div class="d-flex justify-content-end pt-3">
+        <a href="{% url 'added-pet' %}" class="btn btn-success"><i class="bi bi-plus me-1"></i>Adicionar Novo</a>
+    </div>
+    
+        <div class="table-responsive">
+            <table class="table table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th scope="col">Data:</th>
+                        <th scope="col">Dono:</th>
+                        <th scope="col">Pet:</th>
+                        <th scope="col" class="d-flex justify-content-center">Opções:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in object_list %}
+                    <tr>
+                        <td>xx/xx/xxxx</td>
+                        <td>{{item.nome_dono}}</td>
+                        <td>{{item.nome_pet}}</td>
+                        <td class="d-flex justify-content-center">
+                            <a href="{% url 'edit-pet' item.pk %}" class="btn btn-primary btn-sm me-1"><i
+                                    class="bi bi-pencil"></i></a>
+                            <a href="{% url 'delete-pet' item.pk %}" class="btn btn-danger btn-sm ms-1"><i
+                                    class="bi bi-trash3"></i></a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4">Nao existem pets disponíveis para adoção no momento.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item m-1">
+                <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true" class="text-dark">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item m-1"><a class="page-link text-dark" href="#">1</a></li>
+            <li class="page-item m-1"><a class="page-link text-dark" href="#">2</a></li>
+            <li class="page-item m-1"><a class="page-link text-dark" href="#">3</a></li>
+            <li class="page-item m-1">
+                <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true" class="text-dark">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+{% endblock %}

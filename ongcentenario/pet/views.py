@@ -34,7 +34,7 @@ class PaginaCadastroAdotar(CreateView):
     ]
 
     template_name = 'pet/divulgar_cadastro.html'
-    success_url = reverse_lazy('adotar')
+    success_url = reverse_lazy('lista-pet')
 
 
 class PaginaCadastroAdotarEdit(UpdateView):
@@ -66,15 +66,20 @@ class PaginaCadastroAdotarEdit(UpdateView):
 
     template_name = 'pet/divulgar_cadastro.html'
 
-    success_url = reverse_lazy('adotar')
+    success_url = reverse_lazy('lista-pet')
 
 
 class PaginaCadastroAdotarDelete(DeleteView):
     model = Adocao
     template_name = 'pet/divulgar_delete.html'
-    success_url = reverse_lazy('adotar')
+    success_url = reverse_lazy('lista-pet')
 
 
 class PaginaAdotar(ListView):
     model = Adocao
     template_name = 'pet/divulgar.html'
+
+
+class PaginaAdotarLista(ListView):
+    model = Adocao
+    template_name = 'pet/divulgar_lista.html'

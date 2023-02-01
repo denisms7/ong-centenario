@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Especie(models.Model):
@@ -18,14 +19,6 @@ class Raca(models.Model):
         return f"{self.especie.nome} - {self.raca}"
 
 
-class Idade(models.Model):
-    idade = models.CharField(
-        max_length=10, verbose_name='Idade', unique=True, null=False)
-
-    def __str__(self):
-        return f"{self.idade}"
-
-
 class Adocao(models.Model):
     VAR_SEXO = [
         ('Indefinido', 'Indefinido'),
@@ -39,8 +32,60 @@ class Adocao(models.Model):
         ('c', 'Adoção Cancelada'),
     ]
 
+    VAR_IDADE = [
+        ('Desconhecida', 'Desconhecida'),
+
+        ('01 Mês', '01 Mês'),
+        ('02 Mêses', '02 Mêses'),
+        ('03 Mêses', '03 Mêses'),
+        ('04 Mêses', '04 Mêses'),
+        ('05 Mêses', '05 Mêses'),
+        ('06 Mêses', '06 Mêses'),
+        ('07 Mêses', '07 Mêses'),
+        ('08 Mêses', '08 Mêses'),
+        ('09 Mêses', '09 Mêses'),
+        ('10 Mêses', '10 Mêses'),
+        ('11 Mêses', '11 Mêses'),
+
+        ('01 Ano', '01 Ano'),
+        ('02 Anos', '02 Anos'),
+        ('03 Anos', '03 Anos'),
+        ('04 Anos', '04 Anos'),
+        ('05 Anos', '05 Anos'),
+        ('06 Anos', '06 Anos'),
+        ('07 Anos', '07 Anos'),
+        ('08 Anos', '08 Anos'),
+        ('09 Anos', '09 Anos'),
+
+        ('10 Anos', '10 Anos'),
+        ('11 Anos', '11 Anos'),
+        ('12 Anos', '12 Anos'),
+        ('13 Anos', '13 Anos'),
+        ('14 Anos', '14 Anos'),
+        ('15 Anos', '15 Anos'),
+        ('16 Anos', '16 Anos'),
+        ('17 Anos', '17 Anos'),
+        ('18 Anos', '18 Anos'),
+        ('19 Anos', '19 Anos'),
+
+        ('20 Anos', '20 Anos'),
+        ('21 Anos', '21 Anos'),
+        ('22 Anos', '22 Anos'),
+        ('23 Anos', '23 Anos'),
+        ('24 Anos', '24 Anos'),
+        ('25 Anos', '25 Anos'),
+        ('26 Anos', '26 Anos'),
+        ('27 Anos', '27 Anos'),
+        ('28 Anos', '28 Anos'),
+        ('29 Anos', '29 Anos'),
+
+        ('30 Anos', '30 Anos'),
+    ]
+
     # Sistema
     cadastrado_em = models.DateTimeField(auto_now_add=True)
+    cadastrado_por = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Cadastrante')
+
     # Dados Pessoais
     nome_dono = models.CharField(
         max_length=200, verbose_name='Nome Completo do Dono')
@@ -73,8 +118,7 @@ class Adocao(models.Model):
         max_length=2000, verbose_name='Complemento', null=True, blank=True)
     # Dados do Pet
     nome_pet = models.CharField(max_length=200, verbose_name='Nome do Pet')
-    idade = models.ForeignKey(
-        Idade, on_delete=models.PROTECT, verbose_name='Idade')
+    idade = models.CharField(max_length=15, choices=VAR_IDADE)
     especie = models.ForeignKey(
         Especie, on_delete=models.PROTECT, verbose_name='Especie')
     raca = models.ForeignKey(
@@ -84,6 +128,7 @@ class Adocao(models.Model):
     img = models.ImageField(upload_to='Adocao_fotos/', verbose_name='Foto')
     # Status
     status = models.CharField(max_length=1, choices=VAR_STATUS)
+
 
     def __str__(self):
         return f"Dono: {self.nome_dono} Pet: {self.nome_pet} Raça: {self.raca}"

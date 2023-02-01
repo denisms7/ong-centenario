@@ -85,12 +85,12 @@
                                 <li class="nav-item dropdown ">
                                     <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                                         data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-person-circle"></i>
+                                        <i class="bi bi-person-circle me-1"></i>
                                         {{ request.user }}
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li class="dropdown-item">
-                                            <a class="nav-link text-dark" aria-hidden="true">
+                                            <a class="nav-link text-dark" aria-hidden="true" href="{% url 'perfil' %}">
                                                 <i class="bi bi-person-fill me-"></i>
                                                 Perfil
                                             </a>
@@ -168,7 +168,7 @@
                 </p>
             </div>
             <div class="text-center text-white-50 bg-dark pt-3">
-                2023 - Desenvolvido por Denis Muniz Silva
+                2023 - Desenvolvido por Denis Muniz Silva.
             </div>
         </div>
     </footer>

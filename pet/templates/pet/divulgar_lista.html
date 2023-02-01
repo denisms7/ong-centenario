@@ -6,8 +6,6 @@
 <title>Lista de Adoção</title>
 {% endblock %}
 
-{% block menuativo2 %} active {% endblock %}
-{% block footerativo2 %} active {% endblock %}
 
 {% block pagina %}
 
@@ -23,7 +21,8 @@
             <table class="table table-striped mt-3">
                 <thead>
                     <tr>
-                        <th scope="col d-flex">Data:</th>
+                        <th scope="col d-flex">Data de Cadastro:</th>
+                        <th scope="col">Usúario:</th>
                         <th scope="col">Dono:</th>
                         <th scope="col">Pet:</th>
                         <th scope="col" class="d-flex justify-content-center">Opções:</th>
@@ -33,6 +32,7 @@
                     {% for item in object_list %}
                     <tr>
                         <td>{{item.cadastrado_em}}</td>
+                        <td>{{item.cadastrado_por}}</td>
                         <td>{{item.nome_dono}}</td>
                         <td>{{item.nome_pet}}</td>
                         <td class="d-flex justify-content-center">

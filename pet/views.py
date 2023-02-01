@@ -32,9 +32,18 @@ class PaginaCadastroAdotar(LoginRequiredMixin, CreateView):
         'qualidades',
         'img',
         'status',
+
     ]
     template_name = 'pet/divulgar_cadastro.html'
     success_url = reverse_lazy('lista-pet')
+
+    def form_valid(self, form):
+        form.instance.cadastrado_por = self.request.user
+        
+        url = super().form_valid(form)
+        
+        return url
+
 
 class PaginaCadastroAdotarEdit(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')

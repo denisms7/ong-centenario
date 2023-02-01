@@ -25,6 +25,7 @@
                         <th scope="col">Usúario:</th>
                         <th scope="col">Dono:</th>
                         <th scope="col">Pet:</th>
+                        <th scope="col">Status:</th>
                         <th scope="col" class="d-flex justify-content-center">Opções:</th>
                     </tr>
                 </thead>
@@ -34,6 +35,16 @@
                         <td>{{item.cadastrado_em}}</td>
                         <td>{{item.cadastrado_por}}</td>
                         <td>{{item.nome_dono}}</td>
+                        <td>
+                            {% if item.status == 'd' %}
+                               <span class="text-warning fw-bold">Em Adoção</span> 
+                            {% elif item.status == 'c' %}    
+                                <span class="text-danger fw-bold">Cancelado</span> 
+                            {% else %}
+                                <span class="text-success fw-bold">Adotado</span> 
+                            {% endif %}
+                        
+                        </td>
                         <td>{{item.nome_pet}}</td>
                         <td class="d-flex justify-content-center">
                             <a href="{% url 'edit-pet' item.pk %}" class="btn btn-primary btn-sm me-1">

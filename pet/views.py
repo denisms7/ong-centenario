@@ -4,8 +4,10 @@ from django.views.generic.list import ListView
 from .models import Adocao
 from django.urls import reverse_lazy
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class PaginaCadastroAdotar(CreateView):
+class PaginaCadastroAdotar(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
     model = Adocao
     fields = [
         'nome_dono',
@@ -34,8 +36,8 @@ class PaginaCadastroAdotar(CreateView):
     template_name = 'pet/divulgar_cadastro.html'
     success_url = reverse_lazy('lista-pet')
 
-
-class PaginaCadastroAdotarEdit(UpdateView):
+class PaginaCadastroAdotarEdit(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
     model = Adocao
     fields = [
         'nome_dono',
@@ -64,18 +66,19 @@ class PaginaCadastroAdotarEdit(UpdateView):
     template_name = 'pet/divulgar_cadastro.html'
     success_url = reverse_lazy('lista-pet')
 
-
-class PaginaCadastroAdotarDelete(DeleteView):
+class PaginaCadastroAdotarDelete(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
     model = Adocao
     template_name = 'pet/divulgar_delete.html'
     success_url = reverse_lazy('lista-pet')
+
+class PaginaAdotarLista(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = Adocao
+    template_name = 'pet/divulgar_lista.html'
 
 
 class PaginaAdotar(ListView):
     model = Adocao
     template_name = 'pet/divulgar.html'
 
-
-class PaginaAdotarLista(ListView):
-    model = Adocao
-    template_name = 'pet/divulgar_lista.html'

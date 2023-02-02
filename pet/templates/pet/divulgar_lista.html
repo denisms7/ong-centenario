@@ -13,37 +13,33 @@
     <h2>Disponíveis para Adoção</h2>
     <hr>
 
-    <div class="d-flex justify-content-end pt-3">
+    <div class="d-flex justify-content-end my-3">
         <a href="{% url 'added-pet' %}" class="btn btn-success"><i class="bi bi-plus me-1"></i>Adicionar Novo</a>
     </div>
 
-
     <form method="get">
-        <div class="row my-3">
-            <div class="col-md-6">
-                <label for="busca" class="form-label d-block">Pesquisar:</label>
-                <input type="text" id="busca" name="q" value="{{ request.GET.q }}" placeholder="Pesquisar..." class="form-control">
-            </div>
-            <div class="col-md-1 d-flex align-items-end">
-                <div>
-                    <button type="submit" class="btn btn-dark">
-                        <i class="bi bi-search" id="lupacep"></i>
-                    </button>
-                </div>
+        <div class="row mb-3">
+            <label for="busca" class="form-label">Pesquisar:</label>
+            <div class="d-flex align-items-end" id="busca">
+                <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Nome do Dono ou Pet"
+                    class="form-control me-1">
+                <button type="submit" class="btn btn-dark">
+                    <i class="bi bi-search" id="lupacep"></i>
+                </button>
             </div>
         </div>
     </form>
 
-    <div class="table-responsive"> 
+    <div class="table-responsive">
         <table class="table table-striped mt-3">
             <thead>
-                <tr>
+                <tr class="text-bg-dark">
                     <th scope="col">Status:</th>
-                    <th scope="col d-flex">Data de Cadastro:</th>
+                    <th scope="col">Data de Cadastro:</th>
                     <th scope="col">Usúario:</th>
                     <th scope="col">Dono:</th>
                     <th scope="col">Pet:</th>
-                    <th scope="col" class="d-flex justify-content-center">Opções:</th>
+                    <th scope="col">Opções:</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,11 +59,13 @@
                     <td>{{item.cadastrado_por}}</td>
                     <td>{{item.nome_dono}}</td>
                     <td>{{item.nome_pet}}</td>
-                    <td class="d-flex justify-content-center">
-                        <a href="{% url 'edit-pet' item.pk %}" class="btn btn-primary btn-sm me-1">
-                            <i class="bi bi-pencil"></i></a>
-                        <a href="{% url 'delete-pet' item.pk %}" class="btn btn-danger btn-sm ms-1">
-                            <i class="bi bi-trash3"></i></a>
+                    <td>
+                        <a href="{% url 'edit-pet' item.pk %}" class="btn btn-primary btn-sm m-1">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                        <a href="{% url 'delete-pet' item.pk %}" class="btn btn-danger btn-sm m-1">
+                            <i class="bi bi-trash3"></i>
+                        </a>
                     </td>
                 </tr>
                 {% empty %}

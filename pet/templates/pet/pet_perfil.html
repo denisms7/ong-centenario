@@ -3,7 +3,20 @@
 {% load static %}
 
 {% block titulo %}
-<title>Pet</title>
+<title>Adote-me</title>
+{% endblock %}
+
+{% block menuativo2 %} active {% endblock %}
+{% block footerativo2 %} active {% endblock %}
+
+{% block meta_tags %}
+    {% for item in object_list %}
+    <meta property="og:site_name" content="SOS Patinhas">
+    <meta property="og:title" content="Adote-me" />
+    <meta property="og:description" content="Ola, eu sou {{item.nome_pet}}" />
+    <meta property="og:image" itemprop="image" content="{% url 'inicio' %}{{item.img}}">
+    <meta property="og:type" content="website" />
+    {% endfor %}
 {% endblock %}
 
 

@@ -21,7 +21,7 @@
         {% for item in object_list %}
         <div class="p-1 col-12 col-sm-12 col-md-4">
             <div class="card">
-                <img src="{% url 'inicio' %}{{item.img}}" class="card-img-top img-card" alt="Foto do Pet">
+                <img src="{% url 'inicio' %}{{item.img}}" class="card-img-top img-card my-1" alt="Foto do Pet">
                 <div class="card-body">
                     <h5 class="card-title">{{item.nome_pet}}</h5>
                     <p class="card-text">
@@ -36,9 +36,17 @@
                     <hr>
                     <span class="d-flex justify-content-center fs-7">Compartilhe</span>
                     <div class="d-flex justify-content-center redes-sociais">
-                        <a href="#" class="ms-2 me-2"><i class="bi bi-whatsapp"></i></a>
-                        <a href="#" class="ms-2 me-2"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="ms-2 me-2"><i class="bi bi-facebook"></i></a>
+                        <a href="https://api.whatsapp.com/send?text={% url 'perfil-pet' item.id %}" class="ms-2 me-2">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+
+                        <a href="#" class="ms-2 me-2" target="_blank">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+
+                        <a href="#" class="ms-2 me-2" target="_blank">
+                            <i class="bi bi-facebook"></i>
+                        </a>
                     </div>
                 </div>
             </div>

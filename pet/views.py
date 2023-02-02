@@ -2,6 +2,8 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from .models import Adocao
+from django.db.models import Q
+
 from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -34,7 +36,6 @@ class PaginaCadastroAdotar(LoginRequiredMixin, CreateView):
         'qualidades',
         'img',
         'status',
-
     ]
     template_name = 'pet/divulgar_cadastro.html'
     success_url = reverse_lazy('lista-pet')
@@ -87,6 +88,16 @@ class PaginaAdotarLista(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     model = Adocao
     template_name = 'pet/divulgar_lista.html'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get('q')
+        if query:
+            queryset = queryset.filter(
+                Q(nome_dono__icontains=query) | Q(nome_pet__icontains=query)
+            )
+        return queryset
+
 
 class PaginaAdotar(ListView):
     paginate_by = 10

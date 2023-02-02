@@ -16,51 +16,68 @@
     <div class="d-flex justify-content-end pt-3">
         <a href="{% url 'added-pet' %}" class="btn btn-success"><i class="bi bi-plus me-1"></i>Adicionar Novo</a>
     </div>
-    
-        <div class="table-responsive">
-            <table class="table table-striped mt-3">
-                <thead>
-                    <tr>
-                        <th scope="col d-flex">Data de Cadastro:</th>
-                        <th scope="col">Usúario:</th>
-                        <th scope="col">Dono:</th>
-                        <th scope="col">Pet:</th>
-                        <th scope="col">Status:</th>
-                        <th scope="col" class="d-flex justify-content-center">Opções:</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for item in object_list %}
-                    <tr>
-                        <td>{{item.cadastrado_em}}</td>
-                        <td>{{item.cadastrado_por}}</td>
-                        <td>{{item.nome_dono}}</td>
-                        <td>
-                            {% if item.status == 'd' %}
-                               <span class="text-warning fw-bold">Em Adoção</span> 
-                            {% elif item.status == 'c' %}    
-                                <span class="text-danger fw-bold">Cancelado</span> 
-                            {% else %}
-                                <span class="text-success fw-bold">Adotado</span> 
-                            {% endif %}
-                        
-                        </td>
-                        <td>{{item.nome_pet}}</td>
-                        <td class="d-flex justify-content-center">
-                            <a href="{% url 'edit-pet' item.pk %}" class="btn btn-primary btn-sm me-1">
-                                <i class="bi bi-pencil"></i></a>
-                            <a href="{% url 'delete-pet' item.pk %}" class="btn btn-danger btn-sm ms-1">
-                                <i class="bi bi-trash3"></i></a>
-                        </td>
-                    </tr>
-                    {% empty %}
-                    <tr>
-                        <td colspan="4">Nao existem pets disponíveis para adoção no momento.</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+
+
+    <form method="get">
+        <div class="row my-3">
+            <div class="col-md-6">
+                <label for="busca" class="form-label d-block">Pesquisar:</label>
+                <input type="text" id="busca" name="q" value="{{ request.GET.q }}" placeholder="Pesquisar..." class="form-control">
+            </div>
+            <div class="col-md-1 d-flex align-items-end">
+                <div>
+                    <button type="submit" class="btn btn-dark">
+                        <i class="bi bi-search" id="lupacep"></i>
+                    </button>
+                </div>
+            </div>
         </div>
+    </form>
+
+    <div class="table-responsive"> 
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Status:</th>
+                    <th scope="col d-flex">Data de Cadastro:</th>
+                    <th scope="col">Usúario:</th>
+                    <th scope="col">Dono:</th>
+                    <th scope="col">Pet:</th>
+                    <th scope="col" class="d-flex justify-content-center">Opções:</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in object_list %}
+                <tr>
+                    <td>
+                        {% if item.status == 'd' %}
+                        <span class="text-warning fw-bold">Em Adoção</span>
+                        {% elif item.status == 'c' %}
+                        <span class="text-danger fw-bold">Cancelado</span>
+                        {% else %}
+                        <span class="text-success fw-bold">Adotado</span>
+                        {% endif %}
+
+                    </td>
+                    <td>{{item.cadastrado_em}}</td>
+                    <td>{{item.cadastrado_por}}</td>
+                    <td>{{item.nome_dono}}</td>
+                    <td>{{item.nome_pet}}</td>
+                    <td class="d-flex justify-content-center">
+                        <a href="{% url 'edit-pet' item.pk %}" class="btn btn-primary btn-sm me-1">
+                            <i class="bi bi-pencil"></i></a>
+                        <a href="{% url 'delete-pet' item.pk %}" class="btn btn-danger btn-sm ms-1">
+                            <i class="bi bi-trash3"></i></a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center">Nao existem pets disponíveis para adoção no momento.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <nav class="container d-flex justify-content-center">
@@ -70,26 +87,29 @@
             <a class="page-link text-dark" href="?page=1"><i class="bi bi-chevron-double-left"></i></a>
         </li>
         <li class="page-item">
-            <a class="page-link text-dark" href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-chevron-left"></i></a>
+            <a class="page-link text-dark" href="?page={{ page_obj.previous_page_number }}"><i
+                    class="bi bi-chevron-left"></i></a>
         </li>
         {% endif %}
         {% for i in page_obj.paginator.page_range %}
-            {% if page_obj.number == i %}
-            <li class="page-item">
-                <a class="page-link text-dark" href="#">{{ i }} </a>
-            </li>
-            {% else %}
-            <li class="page-item">
-                <a class="page-link text-dark" href="?page={{ i }}">{{ i }}</a>
-            </li>
-            {% endif %}
+        {% if page_obj.number == i %}
+        <li class="page-item">
+            <a class="page-link text-dark" href="#">{{ i }} </a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link text-dark" href="?page={{ i }}">{{ i }}</a>
+        </li>
+        {% endif %}
         {% endfor %}
         {% if page_obj.has_next %}
         <li class="page-item">
-            <a class="page-link text-dark" href="?page={{ page_obj.next_page_number }}"><i class="bi bi-chevron-right"></i></a>
+            <a class="page-link text-dark" href="?page={{ page_obj.next_page_number }}"><i
+                    class="bi bi-chevron-right"></i></a>
         </li>
         <li class="page-item">
-            <a class="page-link text-dark" href="?page={{ page_obj.paginator.num_pages }}"><i class="bi bi-chevron-double-right"></i></a>
+            <a class="page-link text-dark" href="?page={{ page_obj.paginator.num_pages }}"><i
+                    class="bi bi-chevron-double-right"></i></a>
         </li>
         {% endif %}
     </ul>

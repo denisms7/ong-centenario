@@ -65,19 +65,19 @@
 
             <div class="col-sm-12 col-md-4 mb-3">
                 <label for="id_fone_1" class="form-label telefone">Fone 01: <span class="text-danger"><b>*</b></span></label>
-                {{ form.fone_1|add_class:"form-control" }}
+                {% render_field form.fone_1 class="form-control" onkeyup="mascaraFone1(event)" %}
                 <span class="text-danger">{{ form.fone_1.errors }}</span>
             </div>
 
             <div class="col-sm-12 col-md-4 mb-3">
                 <label for="id_fone_3" class="form-label telefone">Fone 02:</label>
-                {{ form.fone_2|add_class:"form-control" }}
+                {% render_field form.fone_2 class="form-control" onkeyup="mascaraFone2(event)" %}
                 <span class="text-danger">{{ form.fone_2.errors }}</span>
             </div>
 
             <div class="col-sm-12 col-md-4 mb-3">
                 <label for="id_fone_3" class="form-label telefone">Fone 03:</label>
-                {{ form.fone_3|add_class:"form-control" }}
+                {% render_field form.fone_3 class="form-control" onkeyup="mascaraFone3(event)" %}
                 <span class="text-danger">{{ form.fone_3.errors }}</span>
             </div>
 
@@ -97,12 +97,10 @@
             <div class="col-sm-6 col-md-3 mb-3">
                 <label for="div-cep" class="form-label d-block">CEP:</label>
                 <div id="div-cep" class="d-inline-flex w-100">
-
                     {{ form.cep|add_class:"form-control" }}
+
                     <button type="button" onclick="pesquisacep(id_cep.value);" class="btn btn-primary ms-1">
                         <i class="bi bi-search" id="lupacep"></i>
-                        <div class="spinner-border spinner-border-sm text-light d-none" id="spinnercep" role="status">
-                        </div>
                     </button>
                 </div>
                 <span class="text-danger">{{ form.cep.errors }}</span>

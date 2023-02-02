@@ -90,9 +90,9 @@ class Adocao(models.Model):
     nome_dono = models.CharField(
         max_length=200, verbose_name='Nome Completo do Dono')
     # Contato
-    email_1 = models.CharField(
+    email_1 = models.EmailField(
         max_length=150, verbose_name='E-mail 01', null=True, blank=True)
-    email_2 = models.CharField(
+    email_2 = models.EmailField(
         max_length=150, verbose_name='E-mail 02', null=True, blank=True)
     fone_1 = models.CharField(max_length=15, verbose_name='Fone 01')
     fone_2 = models.CharField(

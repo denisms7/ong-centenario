@@ -7,9 +7,25 @@
 
 
 {% block pagina %}
-<div class="container">
+<div class="container py-5">
+    <h2>Perfil</h2>
+    <hr>
     
-    <b>{{ object }}</b>  
+    {% for item in object_list %}
+    <section style="height: 50vh; ">
+        <p>
+            <b>Usuário:</b> {{item.username}}<br>
+            <b>E-mail:</b> {{item.email}}
+        </p>
+        <p>
+            <b>Primeiro Nome:</b> {{item.first_name}}<br>
+            <b>Segundo Nome:</b> {{item.last_name}}
+        </p>
+        <p>
+            <b>Ultimo Acesso:</b> {{item.last_login}}
+        </p>
+    </section>
+    {% endfor %}
 
 </div>
 {% endblock %}

@@ -6,17 +6,66 @@
 <title>Pet</title>
 {% endblock %}
 
-{% block menuativo2 %} active {% endblock %}
-{% block footerativo2 %} active {% endblock %}
 
 {% block pagina %}
 
 
 <div class="container py-5">
-    <h2>...</h2>
+    {% for item in object_list %}
+
+    <h2>{{item.nome_pet}}</h2>
     <hr>
 
+    <section class="row">
 
+        <div class="col-sm-12 col-md-5">
+            <img src="{% url 'inicio' %}{{item.img}}" class="img-fluid w-100" alt="Foto do Pet">
+        </div>
+
+        <div class="col-sm-12 col-md-7">
+            <h3>{{item.nome_pet}}</h3>
+            <p>
+                <b>Especie/Raça:</b> {{item.raca}}<br>
+                <b>Sexo:</b> {{item.sexo}}<br>
+                <b>Idade:</b> {{item.idade}}<br>
+                <b>Qualidades:</b><br>{{item.qualidades}}
+            </p>
+            <hr>
+            <p>
+                <b>Dono Atual:</b> {{item.nome_dono}}<br>
+                Contato para adoção: {{item.fone_1}}<br>
+                Aguardando para ser adotado desde {{item.cadastrado_em |date:"d/m/Y"}}
+            </p>
+        </div>
+    </section>
+
+    <section class="mt-5">
+        <h3>Saúde Animal</h3>
+        <sub>Dicas importantes para garantir o bem-estar dos bichos de estimação</sub>
+        <hr>
+        <p>
+            Importar-se com a saúde animal é um passo importante para garantir o conforto e o bem-estar dos pets.
+            Portanto, estar atento aos cuidados que devem ser tomados com os bichinhos de estimação é mais que
+            necessário para atender às necessidades fisiológicas de cada um deles.
+        </p>
+        <p>
+            Realizar checagens com certa frequência, incentivar as atividades físicas e analisar o comportamento dos
+            animais são alguns dos passos fundamentais para estimular o desenvolvimento físico e psicológico deles.
+            Aliás, a saúde deve vir sempre em primeiro lugar!
+
+        <ul>
+            <li>Dê a alimentação adequada</li>
+            <li>Estimule a prática de atividades físicas</li>
+            <li>Mantenha a higiene dos animais</li>
+            <li>Fique atento à vacinação e à vermifugação</li>
+        </ul>
+        </p>
+
+
+
+
+    </section>
+    {% endfor %}
 </div>
 
 {% endblock %}

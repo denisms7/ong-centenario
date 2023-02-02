@@ -90,12 +90,17 @@ class PaginaAdotarLista(LoginRequiredMixin, ListView):
 class PaginaAdotar(ListView):
     model = Adocao
     template_name = 'pet/divulgar.html'
-
     def get_queryset(self):
         self.object_list = Adocao.objects.filter(status='d')
-
         return self.object_list
 
 
+class PerfilPet(ListView):
+    model = Adocao
+    template_name = 'pet/pet_perfil.html'
+
+    def get_queryset(self):
+        self.object_list = Adocao.objects.filter(pk=self.kwargs['pk'])
+        return self.object_list
 
 

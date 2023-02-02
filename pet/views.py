@@ -6,6 +6,8 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.core.paginator import Paginator
+
 class PaginaCadastroAdotar(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Adocao
@@ -88,6 +90,7 @@ class PaginaAdotarLista(LoginRequiredMixin, ListView):
 
 
 class PaginaAdotar(ListView):
+    paginate_by = 10
     model = Adocao
     template_name = 'pet/divulgar.html'
     def get_queryset(self):

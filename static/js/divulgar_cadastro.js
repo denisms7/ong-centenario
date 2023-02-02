@@ -76,6 +76,8 @@ function limpa_formulário_cep() {
     document.getElementById('id_cidade').value=("");
     document.getElementById('id_estado').value=("");
 
+    document.getElementById('ceplog').classList.remove('d-block')
+
 }
 
 function meu_callback(conteudo) {
@@ -85,11 +87,14 @@ if (!("erro" in conteudo)) {
     document.getElementById('id_bairro').value=(conteudo.bairro);
     document.getElementById('id_cidade').value=(conteudo.localidade);
     document.getElementById('id_estado').value=(conteudo.uf);
+
+    document.getElementById('ceplog').classList.remove('d-block')
 } //end if.
 else {
     //CEP não Encontrado.
     limpa_formulário_cep();
-    alert("CEP não encontrado.");
+    //alert("CEP não encontrado.");
+    document.getElementById('ceplog').classList.add('d-block')
 }
 }
 
@@ -127,11 +132,13 @@ function pesquisacep(valor) {
         else {
             //cep é inválido.
             limpa_formulário_cep();
-            alert("Formato de CEP inválido.");
+            document.getElementById('ceplog').classList.add('d-block')
+            // alert("Formato de CEP inválido.");
         }
     } //end if.
     else {
         //cep sem valor, limpa formulário.
         limpa_formulário_cep();
+        document.getElementById('ceplog').classList.remove('d-block')
     }
 };

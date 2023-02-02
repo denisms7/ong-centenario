@@ -46,7 +46,6 @@ class PaginaCadastroAdotar(LoginRequiredMixin, CreateView):
         
         return url
 
-
 class PaginaCadastroAdotarEdit(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
     model = Adocao
@@ -84,10 +83,10 @@ class PaginaCadastroAdotarDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('lista-pet')
 
 class PaginaAdotarLista(LoginRequiredMixin, ListView):
+    paginate_by = 20
     login_url = reverse_lazy('login')
     model = Adocao
     template_name = 'pet/divulgar_lista.html'
-
 
 class PaginaAdotar(ListView):
     paginate_by = 10
@@ -97,7 +96,6 @@ class PaginaAdotar(ListView):
         self.object_list = Adocao.objects.filter(status='d')
         return self.object_list
 
-
 class PerfilPet(ListView):
     model = Adocao
     template_name = 'pet/pet_perfil.html'
@@ -105,5 +103,3 @@ class PerfilPet(ListView):
     def get_queryset(self):
         self.object_list = Adocao.objects.filter(pk=self.kwargs['pk'])
         return self.object_list
-
-

@@ -3,12 +3,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from .models import Adocao
 from django.db.models import Q
-
 from django.urls import reverse_lazy
-
 from django.contrib.auth.mixins import LoginRequiredMixin
-
 from django.core.paginator import Paginator
+
 
 class PaginaCadastroAdotar(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
@@ -42,10 +40,9 @@ class PaginaCadastroAdotar(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.cadastrado_por = self.request.user
-        
         url = super().form_valid(form)
-        
         return url
+
 
 class PaginaCadastroAdotarEdit(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
@@ -77,11 +74,13 @@ class PaginaCadastroAdotarEdit(LoginRequiredMixin, UpdateView):
     template_name = 'pet/divulgar_cadastro.html'
     success_url = reverse_lazy('lista-pet')
 
+
 class PaginaCadastroAdotarDelete(LoginRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
     model = Adocao
     template_name = 'pet/divulgar_delete.html'
     success_url = reverse_lazy('lista-pet')
+
 
 class PaginaAdotarLista(LoginRequiredMixin, ListView):
     paginate_by = 20
@@ -106,6 +105,7 @@ class PaginaAdotar(ListView):
     def get_queryset(self):
         self.object_list = Adocao.objects.filter(status='d')
         return self.object_list
+
 
 class PerfilPet(ListView):
     model = Adocao

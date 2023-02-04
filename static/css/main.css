@@ -90,3 +90,7 @@
 
 
 
+
+.btn-paginacao a:active { 
+    background-color: #000000;
+}

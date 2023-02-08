@@ -131,7 +131,7 @@ class Adocao(models.Model):
 
 
     def __str__(self):
-        return f"Dono: {self.nome_dono} Pet: {self.nome_pet} Raça: {self.raca}"
+        return f"Dono: {self.nome_dono} || Pet: {self.nome_pet} - {self.raca}"
     
     def delete(self, *args, **kwargs):
         if self.img:

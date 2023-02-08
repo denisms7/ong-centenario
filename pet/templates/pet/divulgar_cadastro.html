@@ -16,7 +16,7 @@
     <hr>
 
     <p class="text-secondary fw-lighter">
-        Informe todos os campos obrigatorios (<span class="text-danger"><b>*</b></span>)
+        Informe todos os campos obrigatorios (<span class="text-danger">*</span>)
     </p>
 
     <form enctype="multipart/form-data" method="post">
@@ -26,68 +26,86 @@
 
 
         <div class="row">
-            <h3><i class="bi bi-toggles2 me-1"></i>Status</h3>
+            <h3>Status</h3>
             <hr>
         </div>
 
         <div class="col-sm-12 col-md-4 mb-3">
-            <label for="id_status" class="form-label">Status: <span class="text-danger"><b>*</b></span></label>
-            {{ form.status|add_class:"form-select" }}
-            <span class="text-danger">{{ form.status.errors }}</span>
+            <label for="{{ form.status.id_for_label }}" class="form-label">{{ form.status.label }}: {% if form.status.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+            {% render_field form.status class="form-select" %}
+            {% for error in form.status.errors %}
+                <span class="text-danger">{{ error }}</span>
+            {% endfor %}
         </div>
 
         <div class="row">
-            <h3><i class="bi bi-person-fill me-1"></i>Dados Pessoais</h3>
+            <h3>Dados Pessoais</h3>
             <hr>
             <div class="col-sm-12 col-md-12 mb-3">
-                <label for="id_nome-dono" class="form-label">Nome Completo do Dono: <span class="text-danger"><b>*</b></span></label>
-                {{ form.nome_dono|add_class:"form-control" }}
-                <span class="text-danger">{{ form.nome_dono.errors }}</span>
+                <label for="{{ form.nome_dono.id_for_label }}" class="form-label">{{ form.nome_dono.label }}: {% if form.nome_dono.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.nome_dono class="form-control" %}
+                {% for error in form.nome_dono.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
         </div>
 
-        <h3><i class="bi bi-telephone-fill me-1"></i>Contato</h3>
+        <h3>Contato</h3>
+        <hr>
         <!-- ========================================================================================================== -->
         <!-- ===== CONTATO ===== -->
         <div class="row">
             <div class="col-sm-12 col-md-6 mb-3">
-                <label for="id_email_1" class="form-label">E-mail 01:</label>
-                {{ form.email_1|add_class:"form-control" }}
-                <span class="text-danger">{{ form.email_1.errors }}</span>
+                <label for="{{ form.email_1.id_for_label }}" class="form-label">{{ form.email_1.label }}: {% if form.email_1.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.email_1 class="form-control" %}
+                {% for error in form.email_1.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-6 mb-3">
-                <label for="id_email_2" class="form-label">E-mail 02:</label>
-                {{ form.email_2|add_class:"form-control" }}
-                <span class="text-danger">{{ form.email_2.errors }}</span>
+                <label for="{{ form.email_2.id_for_label }}" class="form-label">{{ form.email_2.label }}: {% if form.email_2.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.email_2 class="form-control" %}
+                {% for error in form.email_2.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-4 mb-3">
-                <label for="id_fone_1" class="form-label telefone">Fone 01: <span class="text-danger"><b>*</b></span></label>
-                {% render_field form.fone_1 class="form-control" onkeyup="mascaraFone1(event)" %}
-                <span class="text-danger">{{ form.fone_1.errors }}</span>
+                <label for="{{ form.fone_1.id_for_label }}" class="form-label">{{ form.fone_1.label }}: {% if form.fone_1.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.fone_1 class="form-control" %}
+                {% for error in form.fone_1.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-4 mb-3">
-                <label for="id_fone_3" class="form-label telefone">Fone 02:</label>
-                {% render_field form.fone_2 class="form-control" onkeyup="mascaraFone2(event)" %}
-                <span class="text-danger">{{ form.fone_2.errors }}</span>
+                <label for="{{ form.fone_2.id_for_label }}" class="form-label">{{ form.fone_2.label }}: {% if form.fone_2.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.fone_2 class="form-control" %}
+                {% for error in form.fone_2.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-4 mb-3">
-                <label for="id_fone_3" class="form-label telefone">Fone 03:</label>
-                {% render_field form.fone_3 class="form-control" onkeyup="mascaraFone3(event)" %}
-                <span class="text-danger">{{ form.fone_3.errors }}</span>
+                <label for="{{ form.fone_3.id_for_label }}" class="form-label">{{ form.fone_3.label }}: {% if form.fone_3.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.fone_3 class="form-control" %}
+                {% for error in form.fone_3.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-12 mb-3">
-                <label for="id_obs" class="form-label">Observações:</label>
+                <label for="{{ form.obs.id_for_label }}" class="form-label">{{ form.obs.label }}: {% if form.obs.field.required %}<span class="text-danger">*</span>{% endif %}</label>
                 {% render_field form.obs class="form-control" rows="2" %}
-                <span class="text-danger">{{ form.obs.errors }}</span>
+                {% for error in form.obs.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
         </div>
 
-        <h3><i class="bi bi-geo-alt-fill me-1"></i>Endereço</h3>
+        <h3>Endereço</h3>
+        <hr>
         <!-- ========================================================================================================== -->
         <!-- ===== ENDERECO ===== -->
         <div class="row">
@@ -95,7 +113,6 @@
                 <label for="div-cep" class="form-label d-block">CEP:</label>
                 <div id="div-cep" class="d-inline-flex w-100">
                     {{ form.cep|add_class:"form-control" }}
-
                     <button type="button" onclick="pesquisacep(id_cep.value);" class="btn btn-dark ms-1">
                         <i class="bi bi-search" id="lupacep"></i>
                     </button>
@@ -107,85 +124,109 @@
             </div>
 
             <div class="col-sm-6 col-md-2 mb-3">
-                <label for="id_estado" class="form-label">Estado:</label>
-                {{ form.estado|add_class:"form-control" }}
-                <span class="text-danger">{{ form.estado.errors }}</span>
+                <label for="{{ form.estado.id_for_label }}" class="form-label">{{ form.estado.label }}: {% if form.estado.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.estado class="form-control" %}
+                {% for error in form.estado.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-7 mb-3">
-                <label for="id_cidade" class="form-label">Cidade:</label>
-                {{ form.cidade|add_class:"form-control" }}
-                <span class="text-danger">{{ form.cidade.errors }}</span>
+                <label for="{{ form.cidade.id_for_label }}" class="form-label">{{ form.cidade.label }}: {% if form.cidade.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.cidade class="form-control" %}
+                {% for error in form.cidade.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-5 mb-3">
-                <label for="id_bairro" class="form-label">Bairro:</label>
-                {{ form.bairro|add_class:"form-control" }}
-                <span class="text-danger">{{ form.bairro.errors }}</span>
+                <label for="{{ form.bairro.id_for_label }}" class="form-label">{{ form.bairro.label }}: {% if form.bairro.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.bairro class="form-control" %}
+                {% for error in form.bairro.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-5 mb-3">
-                <label for="id_rua" class="form-label">Endereço:</label>
-                {{ form.endereco|add_class:"form-control" }}
-                <span class="text-danger">{{ form.endereco.errors }}</span>
+                <label for="{{ form.endereco.id_for_label }}" class="form-label">{{ form.endereco.label }}: {% if form.endereco.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.endereco class="form-control" %}
+                {% for error in form.endereco.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-2 mb-3">
-                <label for="id_numero" class="form-label">Numero:</label>
-                {{ form.numero |add_class:"form-control" }}
-                <span class="text-danger">{{ form.numero.errors }}</span>
+                <label for="{{ form.numero.id_for_label }}" class="form-label">{{ form.numero.label }}: {% if form.numero.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.numero class="form-control" %}
+                {% for error in form.numero.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-12 mb-3">
-                <label for="id_complemento" class="form-label">Complemento:</label>
-
+                <label for="{{ form.complemento.id_for_label }}" class="form-label">{{ form.complemento.label }}: {% if form.complemento.field.required %}<span class="text-danger">*</span>{% endif %}</label>
                 {% render_field form.complemento class="form-control" rows="2" %}
-                <span class="text-danger">{{ form.complemento.errors }}</span>
+                {% for error in form.complemento.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
         </div>
 
-        <h3><i class="bi bi-android me-1"></i>Dados do Pet</h3>
+        <h3>Dados do Pet</h3>
+        <hr>
         <!-- ========================================================================================================== -->
         <!-- ===== PET ===== -->
         <div class="row">
             <div class="col-sm-12 col-md-10 mb-3">
-                <label for="id_nome_pet" class="form-label">Nome do Pet: <span class="text-danger"><b>*</b></span></label>
-                {{ form.nome_pet |add_class:"form-control" }}
-                <span class="text-danger">{{ form.nome_pet.errors }}</span>
+                <label for="{{ form.nome_pet.id_for_label }}" class="form-label">{{ form.nome_pet.label }}: {% if form.nome_pet.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.nome_pet class="form-control" %}
+                {% for error in form.nome_pet.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-2 mb-3">
-                <label for="id_idade" class="form-label">Idade: <span class="text-danger"><b>*</b></span></label>
-                {{ form.idade |add_class:"form-select" }}
-                <span class="text-danger">{{ form.idade.errors }}</span>
+                <label for="{{ form.idade.id_for_label }}" class="form-label">{{ form.idade.label }}: {% if form.idade.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.idade class="form-select" %}
+                {% for error in form.idade.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-4 mb-3">
-                <label for="id_especie" class="form-label">Especie: <span class="text-danger"><b>*</b></span></label>
-                {{ form.especie |add_class:"form-select" }}
-                <span class="text-danger">{{ form.especie.errors }}</span>
+                <label for="{{ form.especie.id_for_label }}" class="form-label">{{ form.especie.label }}: {% if form.especie.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.especie class="form-select" %}
+                {% for error in form.especie.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-4 mb-3">
-                <label for="id_raca" class="form-label">Raça: <span class="text-danger"><b>*</b></span></label>
-                {{ form.raca |add_class:"form-select" }}
-                <span class="text-danger">{{ form.raca.errors }}</span>
+                <label for="{{ form.raca.id_for_label }}" class="form-label">{{ form.raca.label }}: {% if form.raca.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.raca class="form-select" %}
+                {% for error in form.raca.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-4 mb-3">
-                <label for="id_sexo" class="form-label">Sexo: <span class="text-danger"><b>*</b></span></label>
-                {{ form.sexo |add_class:"form-select" }}
-                <span class="text-danger">{{ form.sexo.errors }}</span>
+                <label for="{{ form.sexo.id_for_label }}" class="form-label">{{ form.sexo.label }}: {% if form.sexo.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.sexo class="form-select" %}
+                {% for error in form.sexo.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-12 mb-3">
-                <label for="id_qualidades" class="form-label">Qualidades: <span class="text-danger"><b>*</b></span></label>
-                {{ form.qualidades |add_class:"form-control" }}
-                <span class="text-danger">{{ form.qualidades.errors }}</span>
+                <label for="{{ form.qualidades.id_for_label }}" class="form-label">{{ form.qualidades.label }}: {% if form.qualidades.field.required %}<span class="text-danger">*</span>{% endif %}</label>
+                {% render_field form.qualidades class="form-control" row="2" %}
+                {% for error in form.qualidades.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
             </div>
 
             <div class="col-sm-12 col-md-6 mb-3">
-                <label for="id_img" class="form-label">Foto: <span class="text-danger"><b>*</b></span></label>
+                <label for="id_img" class="form-label">Foto: <span class="text-danger">*</span></label>
                 {{ form.img |add_class:"form-control" }}
                 <span class="text-danger">{{ form.img.errors }}</span>
             </div>

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+from django.core.files.storage import default_storage
 
 class Especie(models.Model):
     nome = models.CharField(
@@ -131,3 +132,8 @@ class Adocao(models.Model):
 
     def __str__(self):
         return f"Dono: {self.nome_dono} Pet: {self.nome_pet} Raça: {self.raca}"
+    
+    def delete(self, *args, **kwargs):
+        if self.img:
+            default_storage.delete(self.img.path)
+        super().delete(*args, **kwargs)

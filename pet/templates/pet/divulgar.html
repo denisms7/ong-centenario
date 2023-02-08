@@ -19,9 +19,9 @@
     <section class="row justify-content-center">
 
         {% for item in object_list %}
-        <div class="p-1 col-12 col-sm-12 col-md-4">
+        <div class="p-1 col-12 col-sm-12 col-md-4 my-1">
             <div class="card">
-                <img src="{% url 'inicio' %}{{item.img}}" class="card-img-top img-card my-1" alt="Foto do Pet">
+                <img src="{% url 'inicio' %}{{item.img}}" class="card-img-top img-card" alt="Foto do Pet">
                 <div class="card-body">
                     <h5 class="card-title">{{item.nome_pet}}</h5>
                     <p class="card-text">

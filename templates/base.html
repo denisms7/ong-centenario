@@ -58,7 +58,6 @@
                                 <a class="nav-link {% block menuativo3 %} {% endblock %}"
                                     href="{% url 'estatuto' %}">Estatuto</a>
                             </li>
-
                             {% if request.user.is_authenticated %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -77,6 +76,12 @@
                                     </li>
                                 </ul>
                             </li>
+                            {% endif %}
+                            {% if user.is_superuser %}
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        href="{% url 'admin:index' %}">Administração do Django</a>
+                                </li>
                             {% endif %}
                         </ul>
 

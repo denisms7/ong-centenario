@@ -49,7 +49,6 @@
         <h3><i class="bi bi-telephone-fill me-1"></i>Contato</h3>
         <!-- ========================================================================================================== -->
         <!-- ===== CONTATO ===== -->
-        <!-- ========================================================================================================== -->
         <div class="row">
             <div class="col-sm-12 col-md-6 mb-3">
                 <label for="id_email_1" class="form-label">E-mail 01:</label>
@@ -91,8 +90,6 @@
         <h3><i class="bi bi-geo-alt-fill me-1"></i>Endereço</h3>
         <!-- ========================================================================================================== -->
         <!-- ===== ENDERECO ===== -->
-        <!-- ========================================================================================================== -->
-
         <div class="row">
             <div class="col-sm-6 col-md-3 mb-3">
                 <label for="div-cep" class="form-label d-block">CEP:</label>
@@ -150,9 +147,7 @@
         <h3><i class="bi bi-android me-1"></i>Dados do Pet</h3>
         <!-- ========================================================================================================== -->
         <!-- ===== PET ===== -->
-        <!-- ========================================================================================================== -->
         <div class="row">
-
             <div class="col-sm-12 col-md-10 mb-3">
                 <label for="id_nome_pet" class="form-label">Nome do Pet: <span class="text-danger"><b>*</b></span></label>
                 {{ form.nome_pet |add_class:"form-control" }}
@@ -196,10 +191,18 @@
             </div>
         </div>
 
-
+        <!-- ========================================================================================================== -->
+        <!-- ===== BOTOES ===== -->
         <div>
-            <button type="submit" class="btn btn-success"><i class="bi bi-check-lg me-1"></i>Salvar</button>
-            <button type="reset" class="btn btn-warning"><i class="bi bi-brush me-1"></i>Limpar</button>
+            <button type="submit" class="btn btn-success my-1 me-1">
+                <i class="bi bi-check-lg me-1"></i>Salvar
+            </button>
+            <button type="reset" class="btn btn-warning my-1 me-1">
+                <i class="bi bi-x me-1"></i>Limpar
+            </button>
+            <a href="{% url 'lista-pet' %}" class="btn btn-dark my-1">
+                <i class="bi bi-arrow-return-left me-1"></i>Voltar
+            </a>
         </div>
 
     </form>

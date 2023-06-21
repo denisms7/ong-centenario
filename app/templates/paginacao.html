@@ -1,10 +1,8 @@
-<div class="container">
 {% if page_obj.paginator.count > 0 %}
     <div class="paginacao-info mb-3">
         Mostrando {{ page_obj.start_index }} a {{ page_obj.end_index }} de {{ page_obj.paginator.count }} registros
     </div>
 {% endif %}
-</div>
 
 {% if paginator.num_pages > 1 %}
 <nav class="container d-flex justify-content-center">

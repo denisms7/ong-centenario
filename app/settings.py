@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
     'paginas.apps.PaginasConfig',
     'pet.apps.PetConfig',

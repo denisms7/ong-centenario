@@ -29,7 +29,6 @@ INSTALLED_APPS = [
 
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
-    'paginas.apps.PaginasConfig',
     'pet.apps.PetConfig',
     'usuarios.apps.UsuariosConfig',
 
@@ -51,7 +50,10 @@ ROOT_URLCONF = 'app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [
+            BASE_DIR / 'app' / 'templates',
+            BASE_DIR / 'templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

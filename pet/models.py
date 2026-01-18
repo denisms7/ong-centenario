@@ -20,9 +20,9 @@ class Raca(models.Model):
 
 class Adocao(models.Model):
     SEXO_CHOICES = [
-        ('Indefinido', _('Indefinido')),
-        ('Macho', _('Macho')),
-        ('Fêmea', _('Fêmea')),
+        ('I', _('Indefinido')),
+        ('M', _('Macho')),
+        ('F', _('Fêmea')),
     ]
 
     STATUS_CHOICES = [

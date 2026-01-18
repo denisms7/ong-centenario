@@ -33,7 +33,9 @@
     {% block content %}
     {% endblock %}
 
-    {% include "footer.html" %}
+    {% block footer %}
+        {% include "footer.html" %}
+    {% endblock footer %}
 
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
     

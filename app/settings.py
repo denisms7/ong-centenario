@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'widget_tweaks',
     'pet.apps.PetConfig',
-    'usuarios.apps.UsuariosConfig',
+    'user.apps.UserConfig',
 
 ]
 
@@ -123,6 +123,6 @@ MIDIA_URL = '/uploads/'
 MIDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 # Configuração de Login
-LOGIN_REDIRECT_URL = 'inicio'
-LOGOUT_REDIRECT_URL = 'inicio'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
